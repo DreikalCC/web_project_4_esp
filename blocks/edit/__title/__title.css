@@ -1,0 +1,14 @@
+.edit__title {
+    padding: 34px 64px 54px 36px;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    margin: 0;
+}
+
+@media screen and (max-width:585px){
+    .edit__title {
+        font-size: 18px;
+        padding: 25px 22px 76px;
+    }
+}

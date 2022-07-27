@@ -1,0 +1,9 @@
+.edit {
+    position: fixed;
+    display: none;
+    justify-self: center;
+    left: 0;
+    right: 0;
+    top: 194px;
+    justify-content: center;
+}

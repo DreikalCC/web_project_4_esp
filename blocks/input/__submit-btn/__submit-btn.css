@@ -1,0 +1,17 @@
+.input__submit-btn {
+    padding: 0;
+    border: none;
+    color: white;
+    background-color: black;
+    border-radius: 2px;
+    width: 358px;
+    height: 50px;
+    align-self: center;
+}
+
+@media screen and (max-width:585px){
+    .input__submit-btn {
+        width: 238px;
+        height: 46px;
+    }
+}

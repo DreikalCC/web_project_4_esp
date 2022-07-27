@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Around The U.S.</title>
   <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="./fonts/Inter-3.19/InterWeb/inter.css">
 </head>
 
 <body class="page">
@@ -21,7 +21,6 @@
         <div class="profile__info">
             <div class="profile__name">Jaques Cousteau</div>
             <button class="profile__edit-button"></button>
-            
             <P class="profile__description">Explorador</P>
         </div>
         <button class="profile__add-button"></button>
@@ -36,7 +35,8 @@
             </div>
             <button class="input__submit-btn">Guardar</button>
             <button class="edit__close"></button>
-        </div>   
+        </div>
+        <div class="edit__overlay"></div>
     </section>
 
     <section class="elements">
@@ -75,7 +75,7 @@
         <div class="element">
             <img class="element__image" src="./images/vanoise.png" alt="Yosemite">
             <div class="element__group">
-                <div class="element__location">Vanoise Nationa...</div>
+                <div class="element__location">Parque Nacional de la Vanoise</div>
                 <button class="element__like"></button> 
             </div>
         </div>
@@ -88,9 +88,11 @@
             </div>
         </div>
     </section>
-<script src="./scrypt.js"></script>
-</body>
 
-<footer class="footer">
-    <p class="footer__copyright">© 2021 Alrededor de los EEUU</p>
-</footer>
+    <footer class="footer">
+        <p class="footer__copyright">© 2021 Alrededor de los EEUU</p>
+    </footer>
+
+<script src="./script.js"></script>
+</body>
+</html>
