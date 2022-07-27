@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>  
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Around The U.S.</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./index.css">
   <link rel="stylesheet" href="./fonts/Inter-3.19/InterWeb/inter.css">
 </head>
 
 <body class="page">
-
-    <header class="header">
-        <img class="header__logo" src="./images/Vector.png" alt="Around the US">
-        <img class="header__line" src="./images/Line.png" alt="_">
-    </header>
-
-    <section class="profile">
-        <img class="profile__pic" src="./images/jack.jpg" alt="Jaques">
-        <div class="profile__info">
-            <div class="profile__name">Jaques Cousteau</div>
-            <button class="profile__edit-button"></button>
-            <P class="profile__description">Explorador</P>
-        </div>
-        <button class="profile__add-button"></button>
-    </section>
-
-    <section class="edit">
-        <div class="edit__form">
-            <h3 class="edit__title">Edit profile</h3>
-            <div class="input">
-              <input type="text" placeholder="Jaques Cousteau" class="input__name">
+  <header class="header">
+    <img class="header__logo" src="./images/Vector.png" alt="Around the US">
+    <img class="header__line" src="./images/Line.png" alt="underline">
+  </header>
+  <section class="profile">
+    <img class="profile__pic" src="./images/jack.jpg" alt="Foto de perfil">
+    <div class="profile__info">
+      <h1 class="profile__name">Cousteau</h1>
+      <button class="profile__info profile__edit-button"></button>
+      <p class="profile__description">Explorador</p>
+    </div>
+    <button class="profile__add-button"></button>
+  </section>
+  <section class="edit">
+    <div class="edit__form">
+      <h3 class="edit__title">Edit profile</h3>
+        <div class="input">
+          <input type="text" placeholder="Jaques Cousteau" class="input__name">
               <input type="text" placeholder="Explorador" class="input__description">
             </div>
             <button class="input__submit-btn">Guardar</button>
@@ -38,61 +35,53 @@
         </div>
         <div class="edit__overlay"></div>
     </section>
-
     <section class="elements">
         <div class="element">
             <img class="element__image" src="./images/yosemite.jpg" alt="Yosemite">
             <div class="element__group">
-                <div class="element__location">Valle de Yosemite</div>
-                <button class="element__like"></button> 
+                <h3 class="element__location">Valle de Yosemite</h3>
+                <button class="element__like"></button>
             </div>
         </div>
-
         <div class="element">
-            <img class="element__image" src="./images/louise.png" alt="Yosemite">
+            <img class="element__image" src="./images/louise.png" alt="Lago Louise">
             <div class="element__group">
-                <div class="element__location">Lago Louise</div>
-                <button class="element__like"></button> 
+                <h3 class="element__location">Lago Louise</h3>
+                <button class="element__like"></button>
             </div>
         </div>
-
         <div class="element">
-            <img class="element__image" src="./images/calvas.png" alt="Yosemite">
+            <img class="element__image" src="./images/calvas.png" alt="Montañas Calvas">
             <div class="element__group">
-                <div class="element__location">Montañas Calvas</div>
-                <button class="element__like"></button>  
+                <h3 class="element__location">Montañas Calvas</h3>
+                <button class="element__like"></button>
             </div>
         </div>
-
         <div class="element">
-            <img class="element__image" src="./images/latemar.png" alt="Yosemite">
+            <img class="element__image" src="./images/latemar.png" alt="Latemar">
             <div class="element__group">
-                <div class="element__location">Latemar</div>
-                <button class="element__like"></button> 
+                <h3 class="element__location">Latemar</h3>
+                <button class="element__like"></button>
             </div>
         </div>
-
         <div class="element">
-            <img class="element__image" src="./images/vanoise.png" alt="Yosemite">
+            <img class="element__image" src="./images/vanoise.png" alt="Parque Nacional de la Vanoise">
             <div class="element__group">
-                <div class="element__location">Parque Nacional de la Vanoise</div>
-                <button class="element__like"></button> 
+                <h3 class="element__location">Parque Nacional de la Vanoise</h3>
+                <button class="element__like"></button>
             </div>
         </div>
-
         <div class="element">
-            <img class="element__image" src="./images/braies.png" alt="Yosemite">
+            <img class="element__image" src="./images/braies.png" alt="Lago di Braies">
             <div class="element__group">
-                <div class="element__location">Lago di Braies</div>
-                <button class="element__like"></button> 
+                <h3 class="element__location">Lago di Braies</h3>
+                <button class="element__like"></button>
             </div>
         </div>
     </section>
-
     <footer class="footer">
         <p class="footer__copyright">© 2021 Alrededor de los EEUU</p>
     </footer>
-
 <script src="./script.js"></script>
 </body>
 </html>
