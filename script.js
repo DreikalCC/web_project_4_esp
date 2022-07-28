@@ -2,7 +2,7 @@ const person = document.querySelector(".profile__name");
 const desc = document.querySelector(".profile__description");
 
 const editButton = document.querySelector('.profile__edit-button');
-//let addButton = document.querySelector('.profile__add-button');
+//const addButton = document.querySelector('.profile__add-button');
 const closeButton = document.querySelector('.edit__close')
 //const likeButton = document.querySelectorAll(".element__like")
 const submitButton = document.querySelector(".input__submit-btn")
@@ -19,8 +19,8 @@ function editProfile (){
 //}
 
 function profileData (){
-  let newName = document.querySelector(".input__name");
-  let newDesc = document.querySelector(".input__description");
+  const newName = document.querySelector(".input__name");
+  const newDesc = document.querySelector(".input__description");
 
   editProfile();
 
