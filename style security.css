@@ -1,0 +1,508 @@
+.page {
+    background-color: black;
+    color: white;
+    font-family: 'Inter';
+    margin: 0 auto;
+    padding: 0;
+    max-width: 880px;
+}
+
+.header {
+    height: 74px;
+    padding-top: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header__logo {
+    height: 33px;
+    width: 173px;
+}
+
+.header__line {
+}
+
+.profile {
+    display: grid;
+    /*height: 120px;*/
+    padding-top: 40px;
+    grid-template-columns: 120px 1fr 150px;
+    column-gap: 30px;
+    max-width: 100%;
+    position: relative;
+}
+
+.profile__pic {
+    border-radius: 100px;
+    height: 120px;
+}
+
+.profile__info {
+    display: grid;
+    grid-template-columns: 1fr 26px;
+    /*flex-direction: column;*/
+    max-width: 415px;
+    height: 74px;
+    padding-top: 22px;
+    /*position: relative;*/
+}
+
+.profile__name {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 48px;
+}
+
+.profile__description {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.profile__edit-button {
+    /*position: absolute;*/
+    /*right: 0;*/
+    width: 28px;
+    height: 28px;
+    padding-top: 50px;
+    background: url(./images/EditButton.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    border: 0;
+    /*box-sizing: border-box;*/
+}
+
+.profile__edit-button:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.profile__add-button {
+    align-self: center;
+    border: 2px solid white;
+    box-sizing: border-box;
+    /*padding: 14px 64px;*/
+    /*font-size: 22px;*/
+    width: 150px;
+    height: 50px;
+    /*line-height: 22px;*/
+    background: url(./images/+.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.profile__add-button:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.edit {
+    position: fixed;
+    display: none;
+    justify-self: center;
+    left: 0;
+    right: 0;
+    top: 194px;
+    justify-content: center;
+}
+
+.edit_active {
+    display: flex;
+}
+
+.edit__form {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    min-width: 430px;
+    min-height: 330px;
+    position: relative;
+    z-index: 2;
+}
+
+.edit__title {
+    padding: 34px 64px 54px 36px;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    margin: 0;
+}
+.edit__close {
+    background: url(./images/Close.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /*transform: rotate(45deg);*/
+    position: absolute;
+    right: -37px;
+    top: -37px;
+}
+
+.edit__close:hover {
+    cursor: pointer;
+}
+
+.edit__overlay {
+    height: 100vh;
+    width: 100vw;
+    top: -194px;
+    position: absolute;
+    background-color: black;
+    opacity: .6;
+    z-index: 1;
+}
+
+.input {
+    padding-bottom: 48px;
+    align-self: center;
+    width: 358px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.input__name {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    border: 0;
+    border-bottom: 1px solid #545454;
+}
+
+.input__description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    border: 0;
+    border-bottom: 1px solid #545454;
+}
+
+.input__submit-btn {
+    padding: 0;
+    border: none;
+    color: white;
+    background-color: black;
+    border-radius: 2px;
+    width: 358px;
+    height: 50px;
+    align-self: center;
+}
+
+input::-webkit-input-placeholder {
+    color: black;
+}
+
+.elements {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    row-gap: 20px;
+    column-gap: 17px;
+    max-width: 100%;
+}
+
+.element {
+    background-color: white;
+    border-radius: 15px;
+    max-width: 282px;
+}
+
+.element__image {
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.element__group {
+    display: grid;
+    grid-template-columns: 1fr 36px;
+    align-items: center;
+    color: black;
+    height: 79px;
+    max-width: 100%;
+    /*justify-content: space-between;*/
+}
+
+.element__location {
+    /*display: flex;*/
+    padding: 0 0 0 21px;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    max-width: 220px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.element__like {
+    background: url(./images/Group.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-right: 15px;
+    width: 21px;
+    height: 19px;
+    border: 0;
+}
+
+.element__liked {
+    background: url(./images/Union.png);
+}
+
+.element__like:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.footer {
+    margin: 0 auto;
+    max-width: 880px;
+}
+
+.footer__copyright {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0;
+    padding: 67px 0 60px;
+    color:#545454;
+}
+
+
+
+
+
+
+
+
+
+
+.input__submit-btn:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.edit {
+  z-index: 2;
+}
+
+.elements {
+  z-index: 0;
+}
+
+.element {
+  position: relative;
+  max-height: 365px;
+}
+
+.element__image {
+  height: 282px;
+}
+
+.element__erase {
+  background: url(./images/thrash.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  width: 18px;
+  height: 19px;
+  top: 18px;
+  right: 15px;
+  border: 0
+}
+
+.element__erase:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+
+.gallery_active {
+  display: flex;
+}
+
+.input__submit-btn_gallery:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width:930px) {
+    .page {
+        max-width: 90%;
+    }
+    .footer {
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width:745px){
+    .profile {
+        grid-template-columns: 120px 1fr;
+        row-gap: 30px;
+    }
+
+    /*.profile__info {
+        grid-template-columns: 1fr 1fr;
+    }*/
+
+    .elements {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (max-width:585px){
+    .profile {
+        grid-template-columns: 1fr;
+        row-gap: 33px;
+        /*position: relative;*/
+    }
+    .profile__pic {
+    justify-self: center;
+    }
+
+    .profile__info {
+        padding: 0;
+        margin: 0 auto;
+        grid-template-columns: 1fr;
+
+    }
+
+    .profile__edit-button {
+        /*margin-left: 15px;*/
+        background-size: 18px;
+        right: 0px;
+        /*padding-top: 40px;*/
+        position: absolute;
+    }
+
+    .profile__name {
+        margin: 0 auto;
+        font-size: 32px;
+        line-height: 37px;
+    }
+
+    .profile__description {
+        font-size: 16px;
+        line-height: 19px;
+        margin: 0 auto;
+    }
+
+    .profile__add-button {
+        justify-self: center;
+        width: 282px;
+    }
+
+    .footer__copyright {
+        font-size: 16px;
+        line-height: 19px;
+        padding: 60px 0 50px;
+    }
+
+    .edit__form {
+        min-width: 282px;
+        min-height: 322px;
+    }
+
+    .edit__title {
+        font-size: 18px;
+        padding: 25px 22px 76px;
+    }
+
+    .input {
+        padding-bottom: 46px;
+        width: 238px;
+    }
+
+    .input__submit-btn {
+        width: 238px;
+        height: 46px;
+    }
+
+    .edit__close {
+        width: 26px;
+        height: 26px;
+        right: 0px;
+        top: -39px;
+    }
+}
+
+@media screen and (max-width:500px){
+    .header {
+        overflow-x: visible;
+        height: 56px;
+        padding-top: 28px;
+        width: 100%;
+    }
+
+    .header__logo {
+        padding-left: 8px;
+        height: 24px;
+        width: 126px;
+    }
+
+    .elements {
+        grid-template-columns: 1fr;
+    }
+
+    .element {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:405px){
+    .page {
+        max-width: 100%;
+    }
+
+    .header__logo {
+        padding-left: 27px;
+    }
+
+    .profile {
+        max-width: 88%;
+        margin: 0 auto;
+    }
+
+    .profile__name {
+        font-size: 22px;
+        line-height: 27px;
+    }
+
+    .profile__edit-button {
+        padding: 30px 10px 0;
+        margin-left: 0;
+    }
+
+    .profile__description {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .elements {
+        max-width: 88%;
+        margin: 0 auto;
+    }
+
+    .footer {
+        max-width: 88%;
+    }
+    .footer__copyright {
+        font-size: 14px;
+        line-height: 17px;
+        padding: 50px 0 36px;
+    }
+}

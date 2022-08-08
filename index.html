@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Around The U.S.</title>
-  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./style security.css">
   <link rel="stylesheet" href="./fonts/Inter-3.19/InterWeb/inter.css">
 </head>
 
@@ -23,9 +23,10 @@
     </div>
     <button class="profile__add-button"></button>
   </section>
+
   <section class="edit">
     <div class="edit__form">
-      <h3 class="edit__title">Edit profile</h3>
+      <h3 class="edit__title">Editar perfil</h3>
         <div class="input">
           <input type="text" placeholder="Jaques Cousteau" class="input__name">
           <input type="text" placeholder="Explorador" class="input__description">
@@ -35,9 +36,26 @@
     </div>
     <div class="edit__overlay"></div>
   </section>
+
+  <section class="edit edit_gallery">
+    <div class="edit__form edit__form_gallery">
+      <h3 class="edit__title edit__title_gallery">Nuevo lugar</h3>
+        <div class="input">
+          <input type="text" placeholder="Titulo" class="input__name input__name_gallery">
+          <input type="url" placeholder="Enlace a la imagen" class="input__description input__description_gallery">
+        </div>
+        <button class="input__submit-btn input__submit-btn_gallery">Crear</button>
+        <button class="edit__close edit__close_gallery"></button>
+    </div>
+    <div class="edit__overlay"></div>
+  </section>
+
   <section class="elements">
+
+<!--
     <div class="element">
       <img class="element__image" src="./images/yosemite.jpg" alt="Yosemite">
+      <button class="element__erase"></button>
       <div class="element__group">
         <h3 class="element__location">Valle de Yosemite</h3>
         <button class="element__like"></button>
@@ -45,6 +63,7 @@
     </div>
     <div class="element">
       <img class="element__image" src="./images/louise.png" alt="Lago Louise">
+      <button class="element__erase"></button>
       <div class="element__group">
         <h3 class="element__location">Lago Louise</h3>
         <button class="element__like"></button>
@@ -52,6 +71,7 @@
     </div>
     <div class="element">
       <img class="element__image" src="./images/calvas.png" alt="Montañas Calvas">
+      <button class="element__erase"></button>
       <div class="element__group">
         <h3 class="element__location">Montañas Calvas</h3>
         <button class="element__like"></button>
@@ -59,6 +79,7 @@
     </div>
     <div class="element">
       <img class="element__image" src="./images/latemar.png" alt="Latemar">
+      <button class="element__erase"></button>
       <div class="element__group">
         <h3 class="element__location">Latemar</h3>
         <button class="element__like"></button>
@@ -66,6 +87,7 @@
     </div>
     <div class="element">
       <img class="element__image" src="./images/vanoise.png" alt="Parque Nacional de la Vanoise">
+      <button class="element__erase"></button>
       <div class="element__group">
         <h3 class="element__location">Parque Nacional de la Vanoise</h3>
         <button class="element__like"></button>
@@ -73,15 +95,34 @@
     </div>
     <div class="element">
       <img class="element__image" src="./images/braies.png" alt="Lago di Braies">
+      <button class="element__erase"></button>
       <div class="element__group">
         <h3 class="element__location">Lago di Braies</h3>
         <button class="element__like"></button>
       </div>
     </div>
   </section>
+-->
+
+
+
   <footer class="footer">
     <p class="footer__copyright">© 2021 Alrededor de los EEUU</p>
   </footer>
+
+
+
+<template id="card">
+  <div class="element">
+    <img class="element__image" src="" alt="Location">
+    <button class="element__erase"></button>
+    <div class="element__group">
+      <h3 class="element__location"></h3>
+      <button class="element__like"></button>
+    </div>
+  </div>
+</template>
+
 <script src="./script.js"></script>
 </body>
 </html>
