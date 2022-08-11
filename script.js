@@ -41,15 +41,7 @@ const initialCards = [
   }
 ];
 
-
-
-
-
-
-
-
 //https://scontent-ort2-2.xx.fbcdn.net/v/t1.6435-9/54463041_2078582752179447_3010843761795137536_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Wgv6p0gkNZsAX_rq1hx&_nc_ht=scontent-ort2-2.xx&oh=00_AT-qeUhykt1rz2PbHCM0WIQeybRb_FwZYA5_Q3YGFH1u0w&oe=631177E4
-
 
 editButton.addEventListener("click", editProfile);
 closeButton.addEventListener("click", editProfile);
@@ -65,10 +57,6 @@ submitGallery.addEventListener("click", addCard);
 closePopup.addEventListener("click", close);
 
 
-
-
-
-
 function editProfile (){
   profileEditor.classList.toggle("edit_active");
 }
@@ -77,9 +65,7 @@ function addPlace (){
   galleryEditor.classList.toggle("gallery_active");
 }
 
-
-
-function profileData (event){
+function profileData (){
   const newName = document.querySelector(".input__name");
   const newDesc = document.querySelector(".input__description");
 
@@ -88,20 +74,13 @@ function profileData (event){
   person.textContent = newName.value;
   desc.textContent = newDesc.value;
 
-  event.preventDefault();
+  //event.preventDefault();
 };
-
-
-
 
 const cardTemplate = document.querySelector("#card").content;
 
-
-
 for (let i = 0; i < initialCards.length; i++){
-
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
-
 
   cardElement.querySelector(".element__location").textContent = initialCards[i]["nombre"];
   cardElement.querySelector(".element__image").alt = initialCards[i]["nombre"];
@@ -122,19 +101,12 @@ for (let i = 0; i < initialCards.length; i++){
     }
   });
 
-
-
   cardContainer.prepend(cardElement);
-
 };
 
 
-
-function addCard (event){
-
+function addCard (){
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
-
-
   cardElement.querySelector(".element__location").textContent = document.querySelector(".input__name_gallery").value;
   cardElement.querySelector(".element__image").alt = document.querySelector(".input__name_gallery").value;
   cardElement.querySelector(".element__image").src = document.querySelector(".input__description_gallery").value;
@@ -145,7 +117,6 @@ function addCard (event){
     cardElement.closest(".element").remove();
   })
 
-
   cardElement.querySelectorAll(".element__image").forEach(image =>{
     image.onclick = () => {
       popScreen.classList.toggle("popup_active");
@@ -155,16 +126,11 @@ function addCard (event){
     }
   });
 
-
-
   cardContainer.prepend(cardElement);
 
-  event.preventDefault();
-
+  addPlace ();
 };
-
 
 function close (){
   popScreen.classList.toggle("popup_active");
 }
-

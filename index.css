@@ -19,11 +19,12 @@
 @import url(./blocks/edit/__form/__form.css);
 @import url(./blocks/edit/__overlay/__overlay.css);
 @import url(./blocks/edit/__title/__title.css);
+@import url(./blocks/edit/__submit-btn/__submit-btn.css);
 
 @import url(./blocks/input/input.css);
 @import url(./blocks/input/__description/__description.css);
 @import url(./blocks/input/__name/__name.css);
-@import url(./blocks/input/__submit-btn/__submit-btn.css);
+
 @import url(./blocks/input/__submit-btn/__submit-btn_gallery.css);
 
 @import url(./blocks/elements/elements.css);
