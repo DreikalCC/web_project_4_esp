@@ -12,6 +12,9 @@
   right: -40px;
   top: -40px;
   z-index: 2;
+  left: auto;
+  visibility: visible;
+  opacity: 1;
 }
 
 .popup_close:hover {
