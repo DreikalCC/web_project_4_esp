@@ -48,4 +48,5 @@
 @import url(./blocks/popup/__name/__name.css);
 @import url(./blocks/popup/__group/__group.css);
 @import url(./blocks/popup/__overlay/__overlay.css);
+@import url(./blocks/popup/__close/__close.css);
 
