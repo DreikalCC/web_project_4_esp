@@ -134,6 +134,7 @@
     line-height: 29px;
     margin: 0;
 }
+
 .edit__close {
     background: url(./images/Close.png);
     background-repeat: no-repeat;
@@ -289,54 +290,19 @@ input::-webkit-input-placeholder {
 
 
 
-
-.input__submit-btn:hover {
-  opacity: .8;
-  cursor: pointer;
-}
-
-.edit {
-  z-index: 2;
-}
-
 .elements {
   z-index: 0;
 }
 
-.element {
-  position: relative;
-  max-height: 365px;
-}
 
-.element__image {
-  height: 282px;
-}
 
-.element__erase {
-  background: url(./images/thrash.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  width: 18px;
-  height: 19px;
-  top: 18px;
-  right: 15px;
-  border: 0
-}
 
-.element__erase:hover {
-  opacity: .5;
-  cursor: pointer;
-}
 
-.gallery_active {
-  display: flex;
-}
 
-.input__submit-btn_gallery:hover {
-  opacity: .8;
-  cursor: pointer;
-}
+
+
+
+
 
 
 

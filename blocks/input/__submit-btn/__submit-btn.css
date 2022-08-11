@@ -9,6 +9,12 @@
   align-self: center;
 }
 
+.input__submit-btn:hover {
+  transition: .5s;
+  opacity: .8;
+  cursor: pointer;
+}
+
 @media screen and (max-width:585px){
   .input__submit-btn {
     width: 238px;

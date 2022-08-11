@@ -1,0 +1,14 @@
+.edit__close_popup {
+  right: -40px;
+  top: -40px;
+  z-index: 2;
+}
+
+@media screen and (max-width:585px){
+  .edit__close {
+    width: 26px;
+    height: 26px;
+    right: 0px;
+    top: -39px;
+  }
+}
