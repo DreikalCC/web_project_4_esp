@@ -6,8 +6,8 @@ const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const closeButton = document.querySelector('.edit__close');
 const closeGallery = document.querySelector('.edit__close_gallery');
-const submitButton = document.querySelector(".input__submit-btn");
-const submitGallery = document.querySelector(".input__submit-btn_gallery");
+const submitButton = document.querySelector(".edit__submit-btn");
+const submitGallery = document.querySelector(".edit__submit-btn_gallery");
 
 const profileEditor = document.querySelector(".edit");
 const galleryEditor = document.querySelector(".edit_gallery");
