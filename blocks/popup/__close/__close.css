@@ -9,8 +9,9 @@
   padding: 0;
   border: 0;
   position: absolute;
-  right: -37px;
-  top: -37px;
+  right: -40px;
+  top: -40px;
+  z-index: 2;
 }
 
 .popup__close:hover {

@@ -12,7 +12,7 @@ const submitGallery = document.querySelector(".edit__submit-btn_gallery");
 const profileEditor = document.querySelector(".edit");
 const galleryEditor = document.querySelector(".edit_gallery");
 const popScreen = document.querySelector(".popup");
-const closePopup = document.querySelector(".edit__close_popup");
+const closePopup = document.querySelector(".popup__close");
 
 const initialCards = [
   {
