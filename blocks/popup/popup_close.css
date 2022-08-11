@@ -1,5 +1,5 @@
-.popup__close {
-  background: url(../../../images/Close.png);
+.popup_close {
+  background: url(../../images/Close.png);
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
@@ -14,14 +14,14 @@
   z-index: 2;
 }
 
-.popup__close:hover {
+.popup_close:hover {
   transition: .5s;
   opacity: .5;
   cursor: pointer;
 }
 
 @media screen and (max-width:585px){
-  .popup__close {
+  .popup_close {
     width: 26px;
     height: 26px;
     right: 0px;
