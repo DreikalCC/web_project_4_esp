@@ -61,10 +61,10 @@ closeButton.addEventListener("click", closeProfileEdit);
 submitProfileButton.addEventListener("click", changeProfileData);
 
 
-addButton.addEventListener("click", addPlaceForm);
+addButton.addEventListener("click", createPlaceForm);
 closeGallery.addEventListener("click", closeGalleryEdit);
 
-submitGallery.addEventListener("click", newCardInfo);
+submitGallery.addEventListener("click", createNewCardInfo);
 
 closePopup.addEventListener("click", closeCardView);
 
@@ -73,7 +73,7 @@ function editProfile (){
   profileEditor.classList.toggle("edit_active");
 }
 
-function addPlaceForm (){
+function createPlaceForm (){
   galleryEditor.classList.toggle("gallery_active");
 }
 
@@ -84,13 +84,13 @@ function closeProfileEdit (){
 
 function closeGalleryEdit (){
   galleryInputs.forEach(input => input.value ='');
-  addPlaceForm();
+  createPlaceForm();
 }
 
 function changeProfileData (){
 
-  profileEditor.querySelector(".input__name").placeholder = newName.value;
-  profileEditor.querySelector(".input__description").placeholder = newDesc.value;
+  profileEditor.querySelector(".input__name").textContent = newName.value;
+  profileEditor.querySelector(".input__description").textContent = newDesc.value;
 
   person.textContent = newName.value;
   desc.textContent = newDesc.value;
@@ -98,10 +98,10 @@ function changeProfileData (){
   editProfile();
 }
 
-function newCardInfo (){
-newCard["nombre"] = document.querySelector(".input__name_gallery").value;
-newCard["link"]= document.querySelector(".input__description_gallery").value;
-createCardElement(newCard);
+function createNewCardInfo (){
+  newCard["nombre"] = document.querySelector(".input__name_gallery").value;
+  newCard["link"]= document.querySelector(".input__description_gallery").value;
+  createCardElement(newCard);
 }
 
 function createCardElement ({nombre, link}){
@@ -133,31 +133,31 @@ function createCardElement ({nombre, link}){
   cardContainer.prepend(card);
   closeGalleryEdit ();
 
-  document.querySelectorAll(".element__like").forEach(button => button.addEventListener("click", likeTheCard));
+  cardContainer.querySelector(".element__like").addEventListener("click", likeTheCard);
 
-  document.querySelectorAll(".element__image").forEach(img => img.addEventListener("click", viewTheCard));
+  cardContainer.querySelector(".element__image").addEventListener("click", viewTheCard);
 
-  document.querySelectorAll(".element__erase").forEach(button => button.addEventListener("click", eraseTheCard));
-
+  cardContainer.querySelector(".element__erase").addEventListener("click", eraseTheCard);
 }
 
 function likeTheCard (evt){
-  const likeButton = evt.currentTarget;
+  const likeButton = evt.target;
   likeButton.classList.toggle("element__liked");
 }
 
 function viewTheCard (evt){
-  const image = evt.currentTarget;
+  const image = evt.target;
   popScreen.classList.toggle("popup__active");
   popScreen.querySelector(".popup__image").src = image.getAttribute("src");
   popScreen.querySelector(".popup__image").alt = image.getAttribute("alt");
   popScreen.querySelector(".popup__name").textContent = image.getAttribute("alt");
 }
+
 function eraseTheCard (evt){
-  const eraseButton = evt.currentTarget;
-  this.removeEventListener("click", likeTheCard);
-  this.removeEventListener("click", viewTheCard);
-  this.removeEventListener("click", eraseTheCard);
+  const eraseButton = evt.target;
+  cardContainer.querySelector(".element__like").removeEventListener("click", likeTheCard);
+  cardContainer.querySelector(".element__image").removeEventListener("click", viewTheCard);
+  cardContainer.querySelector(".element__erase").removeEventListener("click", eraseTheCard);
   eraseButton.closest(".element").remove();
 }
 
@@ -182,10 +182,12 @@ document.addEventListener("keydown", function(evt){
     changeProfileData();
   }
   if (evt.key == "Enter" && galleryEditor.classList.contains("gallery_active")){
-    newCardInfo();
+    createNewCardInfo();
   }
 })
 
 function closeCardView (){
   popScreen.classList.toggle("popup__active");
 }
+
+//cardContainer.querySelector(".element__like").addEventListener("click", likeTheCard);
