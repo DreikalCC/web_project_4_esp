@@ -38,8 +38,6 @@
 @import url(./blocks/footer/__copyright/__copyright.css);
 
 @import url(./blocks/gallery/gallery_active.css);
-@import url(./blocks/gallery/__submit-btn/__submit-btn.css);
-@import url(./blocks/gallery/__close/__close.css);
 
 @import url(./blocks/popup/popup.css);
 @import url(./blocks/popup/__overlay/__overlay.css);
