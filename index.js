@@ -10,7 +10,7 @@ const submitProfileButton = document.querySelector(".edit__submit-btn");
 const submitGallery = document.querySelector(".gallery__submit-btn");
 
 const profileEditor = document.querySelector(".edit");
-const galleryEditor = document.querySelector(".edit__gallery");
+const galleryEditor = document.querySelector(".edit_gallery");
 const popScreen = document.querySelector(".popup");
 const closePopup = document.querySelector(".popup__close");
 
