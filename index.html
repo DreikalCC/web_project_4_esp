@@ -17,21 +17,21 @@
           <input type="text" placeholder="Jaques Cousteau" class="input__name">
           <input type="text" placeholder="Explorador" class="input__description">
         </div>
-        <button class="edit__submit-btn">Guardar</button>
+        <button type="submit" class="edit__submit-btn">Guardar</button>
         <button class="edit__close"></button>
     </div>
     <div class="edit__overlay"></div>
   </section>
 
-  <section class="edit edit_gallery">
+  <section class="edit edit__gallery">
     <div class="edit__form edit__form_gallery">
       <h3 class="edit__title edit__title_gallery">Nuevo lugar</h3>
         <div class="input">
-          <input type="text" placeholder="Titulo" class="input__name input__name_gallery">
-          <input type="url" placeholder="Enlace a la imagen" class="input__description input__description_gallery">
+          <input type="text" name="nombre" placeholder="Titulo" class="input__name input__name_gallery">
+          <input type="url" name="link" placeholder="Enlace a la imagen" class="input__description input__description_gallery">
         </div>
-        <button class="edit__submit-btn edit__submit-btn_gallery">Crear</button>
-        <button class="edit__close edit__close_gallery"></button>
+        <button class="gallery__submit-btn">Crear</button>
+        <button class="gallery__close"></button>
     </div>
     <div class="edit__overlay edit__overlay_gallery"></div>
   </section>
@@ -56,8 +56,8 @@
       <div class="popup__overlay"></div>
       <div class="popup__group">
         <img class="popup__image" src="#" alt="Location">
-        <h3 class="popup__name"></h3>
-        <button class="popup popup_close"></button>
+        <h3 class="popup__name">Imagen</h3>
+        <button class="popup popup__close"></button>
       </div>
     </div>
   </section>
@@ -66,17 +66,6 @@
     <p class="footer__copyright">© 2021 Alrededor de los EEUU</p>
   </footer>
 
-  <template id="card">
-    <div class="element">
-      <img class="element__image" src="#" alt="Location">
-      <button class="element__erase"></button>
-      <div class="element__group">
-        <h3 class="element__location"></h3>
-        <button class="element__like"></button>
-      </div>
-    </div>
-  </template>
-
-  <script src="./script.js"></script>
+  <script src="./index.js"></script>
 </body>
 </html>

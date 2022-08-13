@@ -2,7 +2,7 @@
   position: fixed;
   visibility: hidden;
   /*transition: z-index 10s ease-in;*/
-  transition: all 1s linear;
+  transition: all .5s linear;
   opacity: 0;
   display: flex;
   width: 100%;

@@ -1,5 +1,5 @@
-.popup_close {
-  background: url(../../images/Close.png);
+.gallery__close {
+  background: url(../../../images/Close.png);
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
@@ -9,22 +9,18 @@
   padding: 0;
   border: 0;
   position: absolute;
-  right: -40px;
-  top: -40px;
-  z-index: 2;
-  left: auto;
-  visibility: visible;
-  opacity: 1;
+  right: -37px;
+  top: -37px;
 }
 
-.popup_close:hover {
+.gallery__close:hover {
   transition: .5s;
   opacity: .5;
   cursor: pointer;
 }
 
 @media screen and (max-width:585px){
-  .popup_close {
+  .gallery__close {
     width: 26px;
     height: 26px;
     right: 0px;

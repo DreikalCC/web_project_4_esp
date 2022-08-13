@@ -14,11 +14,11 @@
 
 @import url(./blocks/edit/edit.css);
 @import url(./blocks/edit/edit_active.css);
-@import url(./blocks/edit/__close/__close.css);
-@import url(./blocks/edit/__form/__form.css);
-@import url(./blocks/edit/__overlay/__overlay.css);
 @import url(./blocks/edit/__title/__title.css);
 @import url(./blocks/edit/__submit-btn/__submit-btn.css);
+@import url(./blocks/edit/__overlay/__overlay.css);
+@import url(./blocks/edit/__form/__form.css);
+@import url(./blocks/edit/__close/__close.css);
 
 @import url(./blocks/input/input.css);
 @import url(./blocks/input/__description/__description.css);
@@ -38,12 +38,14 @@
 @import url(./blocks/footer/__copyright/__copyright.css);
 
 @import url(./blocks/gallery/gallery_active.css);
+@import url(./blocks/gallery/__submit-btn/__submit-btn.css);
+@import url(./blocks/gallery/__close/__close.css);
 
 @import url(./blocks/popup/popup.css);
-@import url(./blocks/popup/popup_active.css);
-@import url(./blocks/popup/__image/__image.css);
-@import url(./blocks/popup/__name/__name.css);
-@import url(./blocks/popup/__group/__group.css);
 @import url(./blocks/popup/__overlay/__overlay.css);
-@import url(./blocks/popup/popup_close.css);
+@import url(./blocks/popup/__name/__name.css);
+@import url(./blocks/popup/__image/__image.css);
+@import url(./blocks/popup/__group/__group.css);
+@import url(./blocks/popup/__close/__close.css);
+@import url(./blocks/popup/__active/__active.css);
 
