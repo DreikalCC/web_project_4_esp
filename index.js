@@ -17,7 +17,6 @@ const closePopup = document.querySelector(".popup__close");
 const newName = document.querySelector(".input__name");
 const newDesc = document.querySelector(".input__description");
 
-
 const profileInputs = profileEditor.querySelectorAll('input');
 const galleryInputs = galleryEditor.querySelectorAll('input');
 
@@ -25,7 +24,8 @@ const cardNameInput = document.querySelector(".input__name_gallery").value;
 const cardLinkInput = document.querySelector(".input__description_gallery").value;
 
 const newCard = [{nombre: "",
-link: ""}];
+  link: ""}
+];
 
 const initialCards = [
   {
@@ -162,9 +162,8 @@ function eraseTheCard (evt){
 }
 
 function createInitialCards (){
-  for (i=0;i < initialCards.length;i++){
-  createCardElement(initialCards[i]);
-}}
+  initialCards.forEach(createCardElement)
+}
 
 createInitialCards();
 
@@ -189,5 +188,3 @@ document.addEventListener("keydown", function(evt){
 function closeCardView (){
   popScreen.classList.toggle("popup__active");
 }
-
-//cardContainer.querySelector(".element__like").addEventListener("click", likeTheCard);
