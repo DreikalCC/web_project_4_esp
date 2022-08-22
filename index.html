@@ -11,28 +11,68 @@
 
 <body class="page">
   <section class="edit">
-    <div class="edit__form">
+    <form novalidate name="profile" class="edit__form">
       <h3 class="edit__title">Editar perfil</h3>
-        <div class="input">
-          <input type="text" placeholder="Jaques Cousteau" class="input__name">
-          <input type="text" placeholder="Explorador" class="input__description">
-        </div>
+        <fieldset class="input">
+          <label class="input__field">
+            <input  id="profile-name-input"
+            name="name"
+            required
+            type="text"
+            placeholder="Jaques Cousteau"
+            class="input__form input__name"
+            minlength="2"
+            maxlength="40">
+            <span class="input__form-error profile-name-input-error"></span>
+          </label>
+          <label class="input__field">
+            <input id="profile-desc-input"
+            name="desc"
+            required
+            type="text"
+            placeholder="Explorador"
+            class="input__form input__description"
+            minlength="2"
+            maxlength="200">
+            <span class="input__form-error profile-desc-input-error"></span>
+          </label>
+        </fieldset>
         <button type="submit" class="edit__submit-btn">Guardar</button>
         <button class="edit__close"></button>
-    </div>
+    </form>
     <div class="edit__overlay"></div>
   </section>
 
   <section class="edit edit_gallery">
-    <div class="edit__form edit__form_gallery">
+    <form novalidate name="gallery" class="edit__form edit__form_gallery">
       <h3 class="edit__title edit__title_gallery">Nuevo lugar</h3>
-        <div class="input">
-          <input type="text" name="nombre" placeholder="Titulo" class="input__name input__name_gallery">
-          <input type="url" name="link" placeholder="Enlace a la imagen" class="input__description input__description_gallery">
-        </div>
-        <button class="edit__submit-btn edit__submit-btn_create-card">Crear</button>
+        <fieldset class="input">
+          <label class="input__field">
+            <input required
+            id="card-name-input"
+            name="cardName"
+            type="text"
+            name="nombre"
+            placeholder="Título"
+            class="input__form input__name input__name_gallery"
+            minlength="2"
+            maxlength="30">
+            <span class="input__form-error card-name-input-error"></span>
+          </label>
+          <label class="input__field">
+            <input required
+            id="card-url-input"
+            name="cardUrl"
+            type="url"
+            name="link"
+            placeholder="URL de la imagen"
+            class="input__form input__description input__description_gallery">
+            <span class="input__form-error card-url-input-error"></span>
+          </label>
+        </fieldset>
+        <button type="submit" class="edit__submit-btn edit__submit-btn_create-card">Crear</button>
         <button class="edit__close edit__close_gallery"></button>
-    </div>
+    </form>
     <div class="edit__overlay edit__overlay_gallery"></div>
   </section>
 
@@ -67,5 +107,6 @@
   </footer>
 
   <script src="./index.js"></script>
+  <script src="./validate.js"></script>
 </body>
 </html>
