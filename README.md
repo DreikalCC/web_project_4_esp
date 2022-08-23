@@ -1,7 +1,7 @@
-# Proyecto 5: Alrededor de los Estados Unidos (Continuación)
+# Proyecto 6: Alrededor de los Estados Unidos (Continuación)
 
 ### Descripción general
 
-En este proyecto se utilizó JavaScript para crear mayor interacción con la pagina, no solo se le puede cambiar el nombre y ocupación del usuario, ahora se pueden agregar tarjetas de imagén, se puede seleccionar la imagen de la tarjeta para agrandarla en un lightbox, se pueden agregar y eliminar tarjetas.
+En este proyecto se utilizó JavaScript para la validación de los formularios ayudando al usuario a rellenar correctamente los campos necesarios antes de poder enviar la información, también se inhabilita los botones de "submit" hasta que los campos esten correctamente rellenados y ahora el usuario puede cerrar la ventana emergente con dar click fuera del formulario.
 
-Enlace para la publicación de la pagina:  https://dreikalcc.github.io/web_project_4_esp/
+Enlace para la publicación de la pagina: https://dreikalcc.github.io/web_project_4_esp/

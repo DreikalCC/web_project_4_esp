@@ -185,6 +185,15 @@ document.addEventListener("keydown", function(evt){
   }
 })
 
+document.addEventListener("click", function(evt){
+  if ((evt.target.closest(".edit__overlay")) && profileEditor.classList.contains("edit_active")){
+    closeProfileEdit();
+  }
+  if ((evt.target.closest(".edit__overlay")) && galleryEditor.classList.contains("gallery_active")){
+    closeGalleryEdit();
+  }
+})
+
 function closeCardView (){
   popScreen.classList.toggle("popup__active");
 }
