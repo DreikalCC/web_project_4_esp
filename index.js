@@ -174,6 +174,9 @@ document.addEventListener("keydown", function(evt){
   if (evt.key == "Escape" && galleryEditor.classList.contains("gallery_active")){
     closeGalleryEdit();
   }
+  if (evt.key == "Escape" && popScreen.classList.contains("popup__active")){
+    closeCardView();
+  }
 })
 
 document.addEventListener("keydown", function(evt){
@@ -191,6 +194,9 @@ document.addEventListener("click", function(evt){
   }
   if ((evt.target.closest(".edit__overlay")) && galleryEditor.classList.contains("gallery_active")){
     closeGalleryEdit();
+  }
+  if ((evt.target.closest(".popup__overlay")) && popScreen.classList.contains("popup__active")){
+    closeCardView();
   }
 })
 
