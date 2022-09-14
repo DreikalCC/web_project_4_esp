@@ -1,6 +1,9 @@
+import {Card} from "./card.js";
+import {FormValidator} from "./formvalidator.js";
+
 const person = document.querySelector(".profile__name");
 const desc = document.querySelector(".profile__description");
-const cardContainer = document.querySelector(".elements");
+
 
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
@@ -26,6 +29,14 @@ const cardLinkInput = document.querySelector(".input__description_gallery").valu
 const newCard = [{nombre: "",
   link: ""}
 ];
+
+
+function initiateValidation () {
+const formList = Array.from(document.querySelectorAll(".edit__form"));
+const inputList = Array.from(document.querySelectorAll(".input__form"));
+const validator = new FormValidator (formList, inputList);
+}
+initiateValidation();
 
 const initialCards = [
   {
@@ -101,19 +112,23 @@ function changeProfileData (){
 function createNewCardInfo (){
   newCard["nombre"] = document.querySelector(".input__name_gallery").value;
   newCard["link"]= document.querySelector(".input__description_gallery").value;
-  new Card(newCard);
+  const card = new Card(newCard);
 }
-
+/*
 class Card {
   constructor({nombre, link}){
     this.nombre = nombre;
     this.link = link;
     this.cardElement = this.createCardElement();
+    this.popScreen = document.querySelector(".popup");
     this.likeButton = this.cardElement.querySelector(".element__like");
     this.eraseButton = this.cardElement.querySelector(".element__erase");
   }
 
   createCardElement (){
+    //const popScreen = document.querySelector(".popup");
+    const closePopup = document.querySelector(".popup__close");
+    const cardContainer = document.querySelector(".elements");
     const card = document.createElement('div');
     card.classList.add('element');
 
@@ -146,6 +161,8 @@ class Card {
 
     cardContainer.querySelector(".element__image").addEventListener("click", this._viewTheCard);
 
+    closePopup.addEventListener("click", this._closeCardView);
+
     cardContainer.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
 
     return card;
@@ -166,80 +183,22 @@ class Card {
 
   _eraseTheCard (evt){
     const _eraseButton = evt.target;
-    cardContainer.querySelector(".element__like").removeEventListener("click", this._likeTheCard);
-    cardContainer.querySelector(".element__image").removeEventListener("click", this._viewTheCard);
-    cardContainer.querySelector(".element__erase").removeEventListener("click", this._eraseTheCard);
+    this.cardContainer.querySelector(".element__like").removeEventListener("click", this._likeTheCard);
+    this.cardContainer.querySelector(".element__image").removeEventListener("click", this._viewTheCard);
+    closePopup.removeEventListener("click", this._closeCardView);
+    this.cardContainer.querySelector(".element__erase").removeEventListener("click", this._eraseTheCard);
     _eraseButton.closest(".element").remove();
   }
 
+  _closeCardView (){
+    popScreen.classList.remove("popup__active");
+  }
 
-}
-/*
-function createCardElement ({nombre, link}){
-  const card = document.createElement('div');
-  card.classList.add('element');
-
-  const cardPic = document.createElement('img');
-  cardPic.classList.add('element__image');
-  cardPic.src = link;
-  cardPic.alt = nombre;
-
-  const eraseButton = document.createElement('button');
-  eraseButton.classList.add('element__erase');
-
-  const cardInfo = document.createElement('div');
-  cardInfo.classList.add('element__group');
-
-  const cardName = document.createElement('h3');
-  cardName.classList.add('element__location');
-  cardName.textContent = nombre;
-
-  const likeButton = document.createElement('button');
-  likeButton.classList.add('element__like');
-
-  cardInfo.append(cardName, likeButton);
-
-  card.append(cardPic, eraseButton, cardInfo);
-
-  cardContainer.prepend(card);
-  closeGalleryEdit ();
-
-  cardContainer.querySelector(".element__like").addEventListener("click", likeTheCard);
-
-  cardContainer.querySelector(".element__image").addEventListener("click", viewTheCard);
-
-  cardContainer.querySelector(".element__erase").addEventListener("click", eraseTheCard);
-}*/
-/*
-function likeTheCard (evt){
-  const likeButton = evt.target;
-  likeButton.classList.toggle("element__liked");
-}*/
-/*
-function viewTheCard (evt){
-  const image = evt.target;
-  popScreen.classList.add("popup__active");
-  popScreen.querySelector(".popup__image").src = image.getAttribute("src");
-  popScreen.querySelector(".popup__image").alt = image.getAttribute("alt");
-  popScreen.querySelector(".popup__name").textContent = image.getAttribute("alt");
-}*/
-/*
-function eraseTheCard (evt){
-  const eraseButton = evt.target;
-  cardContainer.querySelector(".element__like").removeEventListener("click", likeTheCard);
-  cardContainer.querySelector(".element__image").removeEventListener("click", viewTheCard);
-  cardContainer.querySelector(".element__erase").removeEventListener("click", eraseTheCard);
-  eraseButton.closest(".element").remove();
 }*/
 
 (function createInitialCards (){
-  //initialCards.forEach(new Card (nombre,link) )
-  for (i=0;i < initialCards.length;i++){
-    new Card(initialCards[i]);
-  }
+  initialCards.forEach( (data) => {const card = new Card (data)} )
 })();
-
-//createInitialCards();
 
 document.addEventListener("keydown", function(evt){
   if (evt.key == "Escape" && profileEditor.classList.contains("edit_active")){
@@ -273,6 +232,7 @@ document.addEventListener("click", function(evt){
     closeCardView();
   }
 })
+
 
 function closeCardView (){
   popScreen.classList.remove("popup__active");
