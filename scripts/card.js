@@ -4,14 +4,9 @@ export class Card {
     this.link = link;
     this.cardElement = this.createCardElement();
     this.popScreen = document.querySelector(".popup");
-    //this.cardContainer = document.querySelector(".elements");
-    //this.likeButton = this.cardElement.querySelector(".element__like");
-    //this.eraseButton = this.cardElement.querySelector(".element__erase");
   }
 
   createCardElement (){
-    //const popScreen = document.querySelector(".popup");
-    //const closePopup = document.querySelector(".popup__close");
     this.cardContainer = document.querySelector(".elements");
     const card = document.createElement('div');
     card.classList.add('element');
@@ -39,13 +34,10 @@ export class Card {
     card.append(cardPic, eraseButton, cardInfo);
 
     this.cardContainer.prepend(card);
-    //closeGalleryEdit ();
 
     this.cardContainer.querySelector(".element__like").addEventListener("click", this._likeTheCard);
 
     this.cardContainer.querySelector(".element__image").addEventListener("click", this._viewTheCard);
-
-    //closePopup.addEventListener("click", this._closeCardView);
 
     this.cardContainer.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
 
@@ -66,11 +58,9 @@ export class Card {
   }
 
   _eraseTheCard = (evt) => {
-    //const _eraseButton = evt.target;
     this.eraseButton = this.cardElement.querySelector(".element__erase");
     this.cardContainer.querySelector(".element__like").removeEventListener("click", this._likeTheCard);
     this.cardContainer.querySelector(".element__image").removeEventListener("click", this._viewTheCard);
-    //closePopup.removeEventListener("click", this._closeCardView);
     this.cardContainer.querySelector(".element__erase").removeEventListener("click", this._eraseTheCard);
     this.eraseButton.closest(".element").remove();
   }
