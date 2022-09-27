@@ -10,7 +10,7 @@
 </head>
 
 <body class="page">
-  <section class="edit">
+  <section id="edit" class="edit">
     <form novalidate name="profile" class="edit__form">
       <h3 class="edit__title">Editar perfil</h3>
         <fieldset class="input">
@@ -43,7 +43,7 @@
     <div class="edit__overlay"></div>
   </section>
 
-  <section class="edit edit_gallery">
+  <section id="gallery" class="edit edit_gallery">
     <form novalidate name="gallery" class="edit__form edit__form_gallery">
       <h3 class="edit__title edit__title_gallery">Nuevo lugar</h3>
         <fieldset class="input">
@@ -69,10 +69,14 @@
           </label>
         </fieldset>
         <button type="submit" class="edit__submit-btn edit__submit-btn_create-card">Crear</button>
-        <button class="edit__close edit__close_gallery"></button>
+        <button class="edit__close gallery__close"></button>
     </form>
-    <div class="edit__overlay edit__overlay_gallery"></div>
+    <div class="edit__overlay gallery__overlay"></div>
   </section>
+
+  <!--   cambiar edit__overlay_gallery a gallery__overlay
+  cambiar edit__close_gallery a gallery__close   -->
+
 
   <header class="header">
     <img class="header__logo" src="./images/Vector.png" alt="Around the US">
@@ -90,7 +94,8 @@
   </section>
 
   <section class="elements">
-    <div class="popup">
+
+    <div id="popup" class="popup">
       <div class="popup__overlay"></div>
       <div class="popup__group">
         <img class="popup__image" src="#" alt="Location">

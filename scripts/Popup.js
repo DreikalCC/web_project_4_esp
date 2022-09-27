@@ -1,7 +1,5 @@
-import { Card } from "./Card.js";
-
 export default class Popup {
-  constructor(popupSelector, card._viewTheCard) {
+  constructor(popupSelector, callback) {
     this._container = document.querySelector(popupSelector);
   }
 

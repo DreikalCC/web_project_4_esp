@@ -21,6 +21,7 @@ export const newCard = [{nombre: "",
 ];
 
 export function documentEventListeners () {
+
   editButton.addEventListener("click", editProfile);
   closeButton.addEventListener("click", closeProfileEdit);
 
@@ -33,17 +34,17 @@ export function documentEventListeners () {
 
   closePopup.addEventListener("click", closeCardView);
 
-  document.addEventListener("keydown", function(evt){
+  /*document.addEventListener("keydown", function(evt){
     if (evt.key == "Escape" && profileEditor.classList.contains("edit_active")){
       closeProfileEdit();
     }
     if (evt.key == "Escape" && galleryEditor.classList.contains("gallery_active")){
       closeGalleryEdit();
     }
-    if (evt.key == "Escape" && popScreen.classList.contains("popup__active")){
+    if (evt.key == "Escape" && popScreen.classList.contains("popup_active")){
       closeCardView();
     }
-  })
+  })*/
 
   document.addEventListener("keydown", function(evt){
     if (evt.key == "Enter" && profileEditor.classList.contains("edit_active")){
@@ -54,6 +55,7 @@ export function documentEventListeners () {
     }
   })
 
+/*
   document.addEventListener("click", function(evt){
     if ((evt.target.closest(".edit__overlay")) && profileEditor.classList.contains("edit_active")){
       closeProfileEdit();
@@ -61,12 +63,13 @@ export function documentEventListeners () {
     if ((evt.target.closest(".edit__overlay")) && galleryEditor.classList.contains("gallery_active")){
       closeGalleryEdit();
     }
-    if ((evt.target.closest(".popup__overlay")) && popScreen.classList.contains("popup__active")){
+    if ((evt.target.closest(".popup__overlay")) && popScreen.classList.contains("popup_active")){
       closeCardView();
     }
-  })
+  })*/
 }
 
+/*
 export function editProfile (){
   profileEditor.classList.toggle("edit_active");
 }
@@ -74,6 +77,7 @@ export function editProfile (){
 export function createPlaceForm (){
   galleryEditor.classList.toggle("gallery_active");
 }
+*/
 
 export function closeProfileEdit (){
   profileInputs.forEach(input => input.value ='');
@@ -103,5 +107,5 @@ export function createNewCardInfo (){
 }
 
 export function closeCardView (){
-  popScreen.classList.remove("popup__active");
+  popScreen.classList.remove("popup_active");
 }

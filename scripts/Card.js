@@ -2,7 +2,7 @@ export class Card {
   constructor({nombre, link}){
     this.nombre = nombre;
     this.link = link;
-    this.cardElement = this.createCardElement();
+    //this.cardElement = this.createCardElement();
     this.popScreen = document.querySelector(".popup");
   }
 
@@ -31,7 +31,7 @@ export class Card {
 
     cardInfo.append(cardName, likeButton);
 
-    card.append(cardPic, eraseButton, cardInfo);
+    //card.append(cardPic, eraseButton, cardInfo);
 
     this.cardContainer.prepend(card);
 
@@ -57,7 +57,7 @@ export class Card {
     this.popScreen.querySelector(".popup__name").textContent = image.getAttribute("alt");
   }
 
-  _eraseTheCard = (evt) => {
+  _eraseTheCard = () => {
     this.eraseButton = this.cardElement.querySelector(".element__erase");
     this.cardContainer.querySelector(".element__like").removeEventListener("click", this._likeTheCard);
     this.cardContainer.querySelector(".element__image").removeEventListener("click", this._viewTheCard);
