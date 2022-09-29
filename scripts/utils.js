@@ -14,13 +14,13 @@ export const galleryEditor = document.querySelector(".edit_gallery");
 export const popScreen = document.querySelector(".popup");
 export const newName = document.querySelector(".input__name");
 export const newDesc = document.querySelector(".input__description");
+export const newCardName = document.querySelector(".input__name_gallery");
+export const newCardLink = document.querySelector(".input__description_gallery");
 export const person = document.querySelector(".profile__name");
 export const desc = document.querySelector(".profile__description");
 export const profileInputs = profileEditor.querySelectorAll('input');
 export const galleryInputs = galleryEditor.querySelectorAll('input');
-export const newCard = [{nombre: "",
-  link: ""}
-];
+
 export const initialCards = [
   {
     nombre: "Valle de Yosemite",
@@ -64,10 +64,29 @@ export function documentEventListeners () {
     user.setUserInfo();
   });
 
-  addButton.addEventListener("click", createPlaceForm);   // ******
+  addButton.addEventListener("click", createPlaceForm);
+  addButton.addEventListener("click", ()=>{
+    const gallery = new PopupWithForm("gallery",)
+  });
+
+
+
   //closeGallery.addEventListener("click", closeGalleryEdit);
 
-  submitGallery.addEventListener("click", createNewCardInfo);
+  //submitGallery.addEventListener("click", createNewCardInfo);
+  submitGallery.addEventListener("click", ()=>{
+    const newCard = new Section ({
+      data: (newCardName.textContent, newCardLink.textContent),
+      renderer: (data) => {
+        const card = new Card(data)
+        const cardElement = card.createCardElement();
+        newCard.setItem(cardElement);
+      }
+    },
+    //cardContainer
+    ".elements"
+    );
+  });
 
   //closePopup.addEventListener("click", closeCardView);
 

@@ -40,6 +40,8 @@ const initialCard = new Section ({
 ".elements"
 );
 
+initialCard.renderItems();
+
 
 
 const profileFormEdit = new PopupWithForm ("edit", );
