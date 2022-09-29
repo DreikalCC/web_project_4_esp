@@ -24,14 +24,6 @@ export default class PopupWithForm extends Popup {
     this.closeButton.addEventListener("click", close);
 
 
-/*
-    this.callback.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this.callback.reset();
-    })
-*/
-
-
     submitProfileButton.addEventListener("click", changeProfileData);
     submitGallery.addEventListener("click", createNewCardInfo);
   }
