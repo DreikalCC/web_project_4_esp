@@ -1,3 +1,5 @@
+import {Popup} from "./Popup.js"
+
 export default class PopupWithForm extends Popup {
   constructor(popupSelector,callback) {
     super(popupSelector);
@@ -6,7 +8,6 @@ export default class PopupWithForm extends Popup {
 
   open () {
     super.open();
-
   }
 
   close () {
@@ -23,12 +24,12 @@ export default class PopupWithForm extends Popup {
     this.closeButton.addEventListener("click", close);
 
 
-
-    this._element.addEventListener("submit", (evt) => {
+/*
+    this.callback.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._element.reset();
+      this.callback.reset();
     })
-
+*/
 
 
     submitProfileButton.addEventListener("click", changeProfileData);

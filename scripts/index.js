@@ -42,7 +42,12 @@ const initialCard = new Section ({
 
 
 
-const form = new PopupWithForm (popScreen, ()=>{
-  /**/
-}/*callback envio formulario al constructor*/)
+const profileFormEdit = new PopupWithForm ("edit", );
+
+const addCardForm = new PopupWithForm ("gallery", );
+
+const lightbox = new PopupWithImage ("popup");
+
+const userData = new UserInfo (person, desc);
+
 
