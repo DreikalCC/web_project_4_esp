@@ -1,4 +1,5 @@
 import {Popup} from "./Popup.js"
+import { profileEditor, galleryEditor } from "./utils.js";
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector,callback) {
@@ -12,6 +13,7 @@ export default class PopupWithForm extends Popup {
 
   close () {
     super.close();
+    `${popupSelector}`Editor.querySelectorAll('input').forEach(input => input.value ='');
   }
 
   _handleEscClose () {
@@ -22,15 +24,11 @@ export default class PopupWithForm extends Popup {
     super.setEvenListeners();
     this.closeButton = document.querySelector('.edit__close');
     this.closeButton.addEventListener("click", close);
-
-
-    submitProfileButton.addEventListener("click", changeProfileData);
-    submitGallery.addEventListener("click", createNewCardInfo);
   }
 
   _getInputValues(){
-    profileEditor.querySelector(".input__name").textContent = newName.value;
-    profileEditor.querySelector(".input__description").textContent = newDesc.value;
+    `${popupSelector}`Editor.querySelector(".input__name").textContent = newName.value;
+    `${popupSelector}`Editor.querySelector(".input__description").textContent = newDesc.value;
   }
 
 }

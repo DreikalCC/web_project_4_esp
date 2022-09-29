@@ -18,8 +18,8 @@ export const newCardName = document.querySelector(".input__name_gallery");
 export const newCardLink = document.querySelector(".input__description_gallery");
 export const person = document.querySelector(".profile__name");
 export const desc = document.querySelector(".profile__description");
-export const profileInputs = profileEditor.querySelectorAll('input');
-export const galleryInputs = galleryEditor.querySelectorAll('input');
+//export const profileInputs = profileEditor.querySelectorAll('input');
+//export const galleryInputs = galleryEditor.querySelectorAll('input');
 
 export const initialCards = [
   {
@@ -88,6 +88,18 @@ export function documentEventListeners () {
     );
   });
 
+
+  document.addEventListener("keydown", function(evt){
+    if (evt.key == "Enter" && profileEditor.classList.contains("edit_active")){
+      changeProfileData();
+    }
+    if (evt.key == "Enter" && galleryEditor.classList.contains("gallery_active")){
+      createNewCardInfo();
+    }
+  })
+
+
+
   //closePopup.addEventListener("click", closeCardView);
 
   /*document.addEventListener("keydown", function(evt){
@@ -102,14 +114,7 @@ export function documentEventListeners () {
     }
   })*/
 
-  document.addEventListener("keydown", function(evt){
-    if (evt.key == "Enter" && profileEditor.classList.contains("edit_active")){
-      changeProfileData();
-    }
-    if (evt.key == "Enter" && galleryEditor.classList.contains("gallery_active")){
-      createNewCardInfo();
-    }
-  })
+
 
 /*
   document.addEventListener("click", function(evt){
@@ -155,12 +160,12 @@ export function changeProfileData (){
 
   editProfile();
 }*/
-
+/*
 export function createNewCardInfo (){
   newCard["nombre"] = document.querySelector(".input__name_gallery").value;
   newCard["link"]= document.querySelector(".input__description_gallery").value;
   const card = new Card(newCard);
-}
+}*/
 /*
 export function closeCardView (){
   popScreen.classList.remove("popup_active");
