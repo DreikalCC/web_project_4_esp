@@ -31,9 +31,9 @@ export class Card {
 
     cardInfo.append(cardName, likeButton);
 
-    //card.append(cardPic, eraseButton, cardInfo);
+    card.append(cardPic, eraseButton, cardInfo);
 
-    this.cardContainer.prepend(card);
+    //this.cardContainer.prepend(card);
 
     this.cardContainer.querySelector(".element__like").addEventListener("click", this._likeTheCard);
 

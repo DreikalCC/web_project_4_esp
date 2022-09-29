@@ -1,4 +1,6 @@
 import {Card} from "./Card.js";
+import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');
@@ -19,20 +21,55 @@ export const galleryInputs = galleryEditor.querySelectorAll('input');
 export const newCard = [{nombre: "",
   link: ""}
 ];
+export const initialCards = [
+  {
+    nombre: "Valle de Yosemite",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    nombre: "Lago Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    nombre: "Montañas Calvas",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    nombre: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    nombre: "Parque Nacional de la Vanoise",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    nombre: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
+];
 
 export function documentEventListeners () {
 
-  editButton.addEventListener("click", editProfile);
-  closeButton.addEventListener("click", closeProfileEdit);
+  //editButton.addEventListener("click", editProfile);
+  editButton.addEventListener("click", ()=>{
+    const profile = new PopupWithForm("edit", )
+  });
 
-  submitProfileButton.addEventListener("click", changeProfileData);
 
-  addButton.addEventListener("click", createPlaceForm);
-  closeGallery.addEventListener("click", closeGalleryEdit);
+  //closeButton.addEventListener("click", closeProfileEdit);
+
+  //submitProfileButton.addEventListener("click", changeProfileData);
+  submitProfileButton.addEventListener("click", ()=>{
+    const user = new UserInfo (newName.textContent, newDesc.textContent);
+    user.setUserInfo();
+  });
+
+  addButton.addEventListener("click", createPlaceForm);   // ******
+  //closeGallery.addEventListener("click", closeGalleryEdit);
 
   submitGallery.addEventListener("click", createNewCardInfo);
 
-  closePopup.addEventListener("click", closeCardView);
+  //closePopup.addEventListener("click", closeCardView);
 
   /*document.addEventListener("keydown", function(evt){
     if (evt.key == "Escape" && profileEditor.classList.contains("edit_active")){
@@ -88,7 +125,7 @@ export function closeGalleryEdit (){
   galleryInputs.forEach(input => input.value ='');
   createPlaceForm();
 }
-
+/*
 export function changeProfileData (){
 
   profileEditor.querySelector(".input__name").textContent = newName.value;
@@ -98,14 +135,14 @@ export function changeProfileData (){
   desc.textContent = newDesc.value;
 
   editProfile();
-}
+}*/
 
 export function createNewCardInfo (){
   newCard["nombre"] = document.querySelector(".input__name_gallery").value;
   newCard["link"]= document.querySelector(".input__description_gallery").value;
   const card = new Card(newCard);
 }
-
+/*
 export function closeCardView (){
   popScreen.classList.remove("popup_active");
-}
+}*/

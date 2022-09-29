@@ -1,5 +1,5 @@
 export default class PopupWithImage extends Popup {
-  constructor(popupSelector, callback) {
+  constructor(popupSelector) {
     super(popupSelector);
     this.popScreen = document.querySelector(".popup");
   }

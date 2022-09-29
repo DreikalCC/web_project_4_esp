@@ -1,7 +1,7 @@
 export default class PopupWithForm extends Popup {
   constructor(popupSelector,callback) {
     super(popupSelector);
-    this.popScreen = document.querySelector(".popup");
+    this.callback = callback;
   }
 
   open () {
@@ -20,8 +20,16 @@ export default class PopupWithForm extends Popup {
   setEvenListeners () {
     super.setEvenListeners();
     this.closeButton = document.querySelector('.edit__close');
-
     this.closeButton.addEventListener("click", close);
+
+
+
+    this._element.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._element.reset();
+    })
+
+
 
     submitProfileButton.addEventListener("click", changeProfileData);
     submitGallery.addEventListener("click", createNewCardInfo);
