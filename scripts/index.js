@@ -7,7 +7,7 @@ import UserInfo from "./UserInfo.js";
 import Section from "./Section.js";
 import {editButton, addButton, closeButton, closeGallery, submitGallery, submitProfileButton, closePopup, profileEditor,
   galleryEditor, documentEventListeners, /*editProfile, createPlaceForm,*/ closeProfileEdit, closeGalleryEdit, /*changeProfileData,*/
-  createNewCardInfo, newDesc, newName, popScreen, /*closeCardView,*/ person, desc, profileInputs, galleryInputs, initialCards} from "./utils.js";
+  /*createNewCardInfo,*/ newDesc, newName, popScreen, /*closeCardView,*/ person, desc, /*profileInputs, galleryInputs,*/ initialCards} from "./utils.js";
 
 (function initiateValidation () {
 const formList = Array.from(document.querySelectorAll(".edit__form"));

@@ -13,7 +13,7 @@ export default class PopupWithForm extends Popup {
 
   close () {
     super.close();
-    `${popupSelector}`Editor.querySelectorAll('input').forEach(input => input.value ='');
+    document.querySelector(popupSelector).querySelectorAll('input').forEach(input => input.value ='');
   }
 
   _handleEscClose () {
@@ -27,8 +27,8 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues(){
-    `${popupSelector}`Editor.querySelector(".input__name").textContent = newName.value;
-    `${popupSelector}`Editor.querySelector(".input__description").textContent = newDesc.value;
+    document.querySelector(popupSelector).querySelector(".input__name").textContent = newName.value;
+    document.querySelector(popupSelector).querySelector(".input__description").textContent = newDesc.value;
   }
 
 }

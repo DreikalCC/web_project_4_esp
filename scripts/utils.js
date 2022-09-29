@@ -64,7 +64,7 @@ export function documentEventListeners () {
     user.setUserInfo();
   });
 
-  addButton.addEventListener("click", createPlaceForm);
+  //addButton.addEventListener("click", createPlaceForm);
   addButton.addEventListener("click", ()=>{
     const gallery = new PopupWithForm("gallery",)
   });
@@ -91,10 +91,24 @@ export function documentEventListeners () {
 
   document.addEventListener("keydown", function(evt){
     if (evt.key == "Enter" && profileEditor.classList.contains("edit_active")){
-      changeProfileData();
+      ()=>{
+        const profile = new PopupWithForm("edit", );
+      };
     }
     if (evt.key == "Enter" && galleryEditor.classList.contains("gallery_active")){
-      createNewCardInfo();
+      ()=>{
+        const newCard = new Section ({
+          data: (newCardName.textContent, newCardLink.textContent),
+          renderer: (data) => {
+            const card = new Card(data)
+            const cardElement = card.createCardElement();
+            newCard.setItem(cardElement);
+          }
+        },
+        //cardContainer
+        ".elements"
+        );
+      }
     }
   })
 
