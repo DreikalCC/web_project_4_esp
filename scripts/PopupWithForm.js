@@ -2,9 +2,9 @@ import {Popup} from "./Popup.js"
 import { profileEditor, galleryEditor } from "./utils.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector,callback) {
+  constructor(popupSelector) {
     super(popupSelector);
-    this.callback = callback;
+    //this.callback = callback;
   }
 
   open () {
@@ -13,7 +13,7 @@ export default class PopupWithForm extends Popup {
 
   close () {
     super.close();
-    document.querySelector(popupSelector).querySelectorAll('input').forEach(input => input.value ='');
+    document.querySelector(`#${popupSelector}`).querySelectorAll('input').forEach(input => input.value ='');
   }
 
   _handleEscClose () {
@@ -27,8 +27,8 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues(){
-    document.querySelector(popupSelector).querySelector(".input__name").textContent = newName.value;
-    document.querySelector(popupSelector).querySelector(".input__description").textContent = newDesc.value;
+    document.querySelector(`#${popupSelector}`).querySelector(".input__name").textContent = newName.value;
+    document.querySelector(`#${popupSelector}`).querySelector(".input__description").textContent = newDesc.value;
   }
 
 }

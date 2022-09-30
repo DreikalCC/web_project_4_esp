@@ -52,7 +52,7 @@ export function documentEventListeners () {
 
   //editButton.addEventListener("click", editProfile);
   editButton.addEventListener("click", ()=>{
-    const profile = new PopupWithForm("edit", )
+    const profile = new PopupWithForm("edit")
   });
 
 
@@ -66,7 +66,7 @@ export function documentEventListeners () {
 
   //addButton.addEventListener("click", createPlaceForm);
   addButton.addEventListener("click", ()=>{
-    const gallery = new PopupWithForm("gallery",)
+    const gallery = new PopupWithForm("gallery")
   });
 
 

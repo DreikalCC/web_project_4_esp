@@ -35,11 +35,11 @@ export class Card {
 
     //this.cardContainer.prepend(card);
 
-    this.cardContainer.querySelector(".element__like").addEventListener("click", this._likeTheCard);
+    card.querySelector(".element__like").addEventListener("click", this._likeTheCard);
 
-    this.cardContainer.querySelector(".element__image").addEventListener("click", this._viewTheCard);
+    card.querySelector(".element__image").addEventListener("click", this._viewTheCard);
 
-    this.cardContainer.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
+    card.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
 
     return card;
   }
@@ -58,7 +58,7 @@ export class Card {
   }
 
   _eraseTheCard = () => {
-    this.eraseButton = this.cardElement.querySelector(".element__erase");
+    this.eraseButton = this.cardContainer.querySelector(".element__erase");
     this.cardContainer.querySelector(".element__like").removeEventListener("click", this._likeTheCard);
     this.cardContainer.querySelector(".element__image").removeEventListener("click", this._viewTheCard);
     this.cardContainer.querySelector(".element__erase").removeEventListener("click", this._eraseTheCard);

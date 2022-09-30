@@ -24,7 +24,7 @@ export class Popup {
     closeButton.addEventListener("click", this.close);
 
     document.addEventListener("click", function(evt){
-      if ((evt.target.closest(".${popupSelector}__overlay")) && this._container.classList.contains(`${popupSelector}_active`)){
+      if ((evt.target.closest(`.${popupSelector}__overlay`)) && this._container.classList.contains(`${popupSelector}_active`)){
         this.close();
       }
     })
