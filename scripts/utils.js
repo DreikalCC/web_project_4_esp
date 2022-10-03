@@ -1,6 +1,7 @@
 import {Card} from "./Card.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
+import { profileFormEdit } from "./index.js";
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');
@@ -70,7 +71,8 @@ export function documentEventListeners () {
 
   //editButton.addEventListener("click", editProfile);
   editButton.addEventListener("click", ()=>{
-    const profile = new PopupWithForm("edit", handleSubmitProfile, profileEdit)
+    //const profile = new PopupWithForm("edit", handleSubmitProfile, profileEdit);
+    profileFormEdit.open();
   });
 
 
@@ -80,11 +82,13 @@ export function documentEventListeners () {
   submitProfileButton.addEventListener("click", ()=>{
     const user = new UserInfo (newName.textContent, newDesc.textContent);
     user.setUserInfo();
+
   });
 
   //addButton.addEventListener("click", createPlaceForm);
   addButton.addEventListener("click", ()=>{
-    const gallery = new PopupWithForm("gallery", handleSubmitCard, galleryEdit)
+    //const gallery = new PopupWithForm("gallery", handleSubmitCard, galleryEdit);
+    addCardForm.open();
   });
 
 

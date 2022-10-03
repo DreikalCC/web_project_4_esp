@@ -44,10 +44,10 @@ initialCard.renderItems();
 
 
 
-const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile, profileEditor);
-profileFormEdit.open();
+export const profileFormEdit = new PopupWithForm (".edit", handleSubmitProfile, profileEditor);
+//profileFormEdit.open();
 
-const addCardForm = new PopupWithForm ("gallery", handleSubmitCard, galleryEdit);
+const addCardForm = new PopupWithForm (".gallery", handleSubmitCard, galleryEdit);
 //addCardForm.open();
 
 const lightbox = new PopupWithImage (".popup");

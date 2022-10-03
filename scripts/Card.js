@@ -37,7 +37,7 @@ export class Card {
 
     card.querySelector(".element__like").addEventListener("click", this._likeTheCard);
 
-    card.querySelector(".element__image").addEventListener("click", this._viewTheCard);
+    //card.querySelector(".element__image").addEventListener("click", this._viewTheCard);
 
     card.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
 
