@@ -6,8 +6,8 @@ import PopupWithImage from "./PopupWithImage.js";
 import UserInfo from "./UserInfo.js";
 import Section from "./Section.js";
 import {editButton, addButton, closeButton, closeGallery, submitGallery, submitProfileButton, closePopup, profileEditor,
-  galleryEditor, documentEventListeners, /*editProfile, createPlaceForm,*/ closeProfileEdit, closeGalleryEdit, /*changeProfileData,*/
-  /*createNewCardInfo,*/ newDesc, newName, popScreen, /*closeCardView,*/ person, desc, /*profileInputs, galleryInputs,*/ initialCards} from "./utils.js";
+  galleryEditor, documentEventListeners, /*editProfile, createPlaceForm,*/ /*closeProfileEdit, closeGalleryEdit, changeProfileData,*/
+  /*createNewCardInfo,*/ newDesc, newName, popScreen, /*closeCardView,*/ person, desc, /*profileInputs, galleryInputs,*/ initialCards, handleSubmitCard, handleSubmitProfile, galleryEdit} from "./utils.js";
 
 (function initiateValidation () {
 const formList = Array.from(document.querySelectorAll(".edit__form"));
@@ -44,11 +44,13 @@ initialCard.renderItems();
 
 
 
-const profileFormEdit = new PopupWithForm ("edit", );
+const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile, profileEditor);
+profileFormEdit.open();
 
-const addCardForm = new PopupWithForm ("gallery", );
+const addCardForm = new PopupWithForm ("gallery", handleSubmitCard, galleryEdit);
+//addCardForm.open();
 
-const lightbox = new PopupWithImage ("popup");
+const lightbox = new PopupWithImage (".popup");
 
 const userData = new UserInfo (person, desc);
 

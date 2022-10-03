@@ -18,9 +18,27 @@ export const newCardName = document.querySelector(".input__name_gallery");
 export const newCardLink = document.querySelector(".input__description_gallery");
 export const person = document.querySelector(".profile__name");
 export const desc = document.querySelector(".profile__description");
-//export const profileInputs = profileEditor.querySelectorAll('input');
-//export const galleryInputs = galleryEditor.querySelectorAll('input');
-
+export const profileEdit = document.querySelectorAll('edit__form');
+export const galleryEdit = document.querySelectorAll('edit__form_gallery');
+export const handleSubmitCard = (evt)=>{
+  evt.preventDefault()
+  const newCard = new Section ({
+    data: (newCardName.textContent, newCardLink.textContent),
+    renderer: (data) => {
+      const card = new Card(data)
+      const cardElement = card.createCardElement();
+      newCard.setItem(cardElement);
+    }
+  },
+  //cardContainer
+  ".elements"
+  );
+}
+export const handleSubmitProfile = (evt)=>{
+  evt.preventDefault()
+  const user = new UserInfo (newName.textContent, newDesc.textContent);
+  user.setUserInfo();
+}
 export const initialCards = [
   {
     nombre: "Valle de Yosemite",
@@ -52,7 +70,7 @@ export function documentEventListeners () {
 
   //editButton.addEventListener("click", editProfile);
   editButton.addEventListener("click", ()=>{
-    const profile = new PopupWithForm("edit")
+    const profile = new PopupWithForm("edit", handleSubmitProfile, profileEdit)
   });
 
 
@@ -66,7 +84,7 @@ export function documentEventListeners () {
 
   //addButton.addEventListener("click", createPlaceForm);
   addButton.addEventListener("click", ()=>{
-    const gallery = new PopupWithForm("gallery")
+    const gallery = new PopupWithForm("gallery", handleSubmitCard, galleryEdit)
   });
 
 
@@ -74,41 +92,17 @@ export function documentEventListeners () {
   //closeGallery.addEventListener("click", closeGalleryEdit);
 
   //submitGallery.addEventListener("click", createNewCardInfo);
-  submitGallery.addEventListener("click", ()=>{
-    const newCard = new Section ({
-      data: (newCardName.textContent, newCardLink.textContent),
-      renderer: (data) => {
-        const card = new Card(data)
-        const cardElement = card.createCardElement();
-        newCard.setItem(cardElement);
-      }
-    },
-    //cardContainer
-    ".elements"
-    );
-  });
+  submitGallery.addEventListener("click", handleSubmitCard);
 
 
   document.addEventListener("keydown", function(evt){
     if (evt.key == "Enter" && profileEditor.classList.contains("edit_active")){
       ()=>{
-        const profile = new PopupWithForm("edit", );
+        const profile = new PopupWithForm("edit", handleSubmitProfile, profileEdit);
       };
     }
     if (evt.key == "Enter" && galleryEditor.classList.contains("gallery_active")){
-      ()=>{
-        const newCard = new Section ({
-          data: (newCardName.textContent, newCardLink.textContent),
-          renderer: (data) => {
-            const card = new Card(data)
-            const cardElement = card.createCardElement();
-            newCard.setItem(cardElement);
-          }
-        },
-        //cardContainer
-        ".elements"
-        );
-      }
+      handleSubmitCard();
     }
   })
 
@@ -142,7 +136,13 @@ export function documentEventListeners () {
       closeCardView();
     }
   })*/
+
+
+
 }
+
+
+
 
 /*
 export function editProfile (){
@@ -154,6 +154,10 @@ export function createPlaceForm (){
 }
 */
 
+
+
+
+/*
 export function closeProfileEdit (){
   profileInputs.forEach(input => input.value ='');
   editProfile();
@@ -163,6 +167,11 @@ export function closeGalleryEdit (){
   galleryInputs.forEach(input => input.value ='');
   createPlaceForm();
 }
+*/
+
+
+
+
 /*
 export function changeProfileData (){
 
