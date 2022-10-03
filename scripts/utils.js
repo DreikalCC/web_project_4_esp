@@ -1,7 +1,7 @@
 import {Card} from "./Card.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
-import { profileFormEdit } from "./index.js";
+import { profileFormEdit, addCardForm } from "./index.js";
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');
