@@ -24,5 +24,6 @@ export default class PopupWithImage extends Popup {
 
   setEvenListeners () {
     super.setEvenListeners();
+    document.querySelector(".element__image").addEventListener("click", this.open);
   }
 }

@@ -1,7 +1,7 @@
 import { person, desc } from "./utils.js  ";
 
 export default class UserInfo {
-  constructor({name, job}){
+  constructor(name, job){
     this.name = name;
     this.job = job;
   }

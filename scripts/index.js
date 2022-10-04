@@ -44,13 +44,14 @@ initialCard.renderItems();
 
 
 
-export const profileFormEdit = new PopupWithForm (".edit", handleSubmitProfile, profileEditor);
+export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile, profileEditor);
 //profileFormEdit.open();
 
-export const addCardForm = new PopupWithForm (".gallery", handleSubmitCard, galleryEdit);
+export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard, galleryEdit);
 //addCardForm.open();
 
-const lightbox = new PopupWithImage (".popup");
+export const lightbox = new PopupWithImage ("popup");
+lightbox.setEvenListeners();
 
 const userData = new UserInfo (person, desc);
 

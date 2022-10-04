@@ -2,6 +2,7 @@ import {Card} from "./Card.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
 import { profileFormEdit, addCardForm } from "./index.js";
+import Section from "./Section.js";
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');
@@ -19,12 +20,12 @@ export const newCardName = document.querySelector(".input__name_gallery");
 export const newCardLink = document.querySelector(".input__description_gallery");
 export const person = document.querySelector(".profile__name");
 export const desc = document.querySelector(".profile__description");
-export const profileEdit = document.querySelectorAll('edit__form');
-export const galleryEdit = document.querySelectorAll('edit__form_gallery');
+export const profileEdit = document.querySelector('.edit__form');
+export const galleryEdit = document.querySelector('.edit__form_gallery');
 export const handleSubmitCard = (evt)=>{
   evt.preventDefault()
   const newCard = new Section ({
-    data: (newCardName.textContent, newCardLink.textContent),
+    data: (newCardName.value, newCardLink.value),
     renderer: (data) => {
       const card = new Card(data)
       const cardElement = card.createCardElement();
@@ -37,7 +38,10 @@ export const handleSubmitCard = (evt)=>{
 }
 export const handleSubmitProfile = (evt)=>{
   evt.preventDefault()
-  const user = new UserInfo (newName.textContent, newDesc.textContent);
+  const user = new UserInfo (newName.value, newDesc.value);
+  console.log(newName);
+  console.log(newDesc);
+  //console.log();
   user.setUserInfo();
 }
 export const initialCards = [
