@@ -22,26 +22,28 @@ export const person = document.querySelector(".profile__name");
 export const desc = document.querySelector(".profile__description");
 export const profileEdit = document.querySelector('.edit__form');
 export const galleryEdit = document.querySelector('.edit__form_gallery');
+
+
 export const handleSubmitCard = (evt)=>{
-  evt.preventDefault()
+  evt.preventDefault();
   const newCard = new Section ({
-    data: (newCardName.value, newCardLink.value),
+    data: [{nombre: newCardName.value, link: newCardLink.value}],
     renderer: (data) => {
       const card = new Card(data)
       const cardElement = card.createCardElement();
       newCard.setItem(cardElement);
+
     }
   },
   //cardContainer
   ".elements"
   );
+  newCard.renderItems();
+  addCardForm.close();
 }
-export const handleSubmitProfile = (evt)=>{
-  evt.preventDefault()
+export const handleSubmitProfile = ()=>{
+  //evt.preventDefault()
   const user = new UserInfo (newName.value, newDesc.value);
-  console.log(newName);
-  console.log(newDesc);
-  //console.log();
   user.setUserInfo();
 }
 export const initialCards = [
@@ -73,40 +75,28 @@ export const initialCards = [
 
 export function documentEventListeners () {
 
-  //editButton.addEventListener("click", editProfile);
   editButton.addEventListener("click", ()=>{
-    //const profile = new PopupWithForm("edit", handleSubmitProfile, profileEdit);
     profileFormEdit.open();
   });
 
 
-  //closeButton.addEventListener("click", closeProfileEdit);
-
-  //submitProfileButton.addEventListener("click", changeProfileData);
   submitProfileButton.addEventListener("click", ()=>{
-    const user = new UserInfo (newName.textContent, newDesc.textContent);
-    user.setUserInfo();
-
+    handleSubmitProfile();
+    profileFormEdit.close();
   });
 
-  //addButton.addEventListener("click", createPlaceForm);
+
   addButton.addEventListener("click", ()=>{
-    //const gallery = new PopupWithForm("gallery", handleSubmitCard, galleryEdit);
     addCardForm.open();
   });
 
 
-
-  //closeGallery.addEventListener("click", closeGalleryEdit);
-
-  //submitGallery.addEventListener("click", createNewCardInfo);
   submitGallery.addEventListener("click", handleSubmitCard);
-
 
   document.addEventListener("keydown", function(evt){
     if (evt.key == "Enter" && profileEditor.classList.contains("edit_active")){
       ()=>{
-        const profile = new PopupWithForm("edit", handleSubmitProfile, profileEdit);
+        handleSubmitProfile();
       };
     }
     if (evt.key == "Enter" && galleryEditor.classList.contains("gallery_active")){
@@ -114,90 +104,4 @@ export function documentEventListeners () {
     }
   })
 
-
-
-  //closePopup.addEventListener("click", closeCardView);
-
-  /*document.addEventListener("keydown", function(evt){
-    if (evt.key == "Escape" && profileEditor.classList.contains("edit_active")){
-      closeProfileEdit();
-    }
-    if (evt.key == "Escape" && galleryEditor.classList.contains("gallery_active")){
-      closeGalleryEdit();
-    }
-    if (evt.key == "Escape" && popScreen.classList.contains("popup_active")){
-      closeCardView();
-    }
-  })*/
-
-
-
-/*
-  document.addEventListener("click", function(evt){
-    if ((evt.target.closest(".edit__overlay")) && profileEditor.classList.contains("edit_active")){
-      closeProfileEdit();
-    }
-    if ((evt.target.closest(".edit__overlay")) && galleryEditor.classList.contains("gallery_active")){
-      closeGalleryEdit();
-    }
-    if ((evt.target.closest(".popup__overlay")) && popScreen.classList.contains("popup_active")){
-      closeCardView();
-    }
-  })*/
-
-
-
 }
-
-
-
-
-/*
-export function editProfile (){
-  profileEditor.classList.toggle("edit_active");
-}
-
-export function createPlaceForm (){
-  galleryEditor.classList.toggle("gallery_active");
-}
-*/
-
-
-
-
-/*
-export function closeProfileEdit (){
-  profileInputs.forEach(input => input.value ='');
-  editProfile();
-}
-
-export function closeGalleryEdit (){
-  galleryInputs.forEach(input => input.value ='');
-  createPlaceForm();
-}
-*/
-
-
-
-
-/*
-export function changeProfileData (){
-
-  profileEditor.querySelector(".input__name").textContent = newName.value;
-  profileEditor.querySelector(".input__description").textContent = newDesc.value;
-
-  person.textContent = newName.value;
-  desc.textContent = newDesc.value;
-
-  editProfile();
-}*/
-/*
-export function createNewCardInfo (){
-  newCard["nombre"] = document.querySelector(".input__name_gallery").value;
-  newCard["link"]= document.querySelector(".input__description_gallery").value;
-  const card = new Card(newCard);
-}*/
-/*
-export function closeCardView (){
-  popScreen.classList.remove("popup_active");
-}*/

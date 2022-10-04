@@ -16,6 +16,9 @@ export default class UserInfo {
   setUserInfo () {
     //const person = document.querySelector(".profile__name");
     //const desc = document.querySelector(".profile__description");
+    //profileEditor.querySelector(".input__name").textContent = this.name;
+    //profileEditor.querySelector(".input__description").textContent = this.job;
+
     person.textContent = this.name;
     desc.textContent = this.job;
   }

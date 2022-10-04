@@ -1,17 +1,19 @@
+import { lightbox } from "./index.js";
 import {Popup} from "./Popup.js"
 
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
-    this.popScreen = document.querySelector(".popup");
+    //this._container = document.querySelector(`.${popupSelector}`);
   }
 
   open () {
     super.open();
+
     const image = evt.target;
-    this.popScreen.querySelector(".popup__image").src = image.getAttribute("src");
-    this.popScreen.querySelector(".popup__image").alt = image.getAttribute("alt");
-    this.popScreen.querySelector(".popup__name").textContent = image.getAttribute("alt");
+    this._container.querySelector(".popup__image").src = image.getAttribute("src");
+    this._container.querySelector(".popup__image").alt = image.getAttribute("alt");
+    this._container.querySelector(".popup__name").textContent = image.getAttribute("alt");
   }
 
   close () {
@@ -24,6 +26,9 @@ export default class PopupWithImage extends Popup {
 
   setEvenListeners () {
     super.setEvenListeners();
+    console.log(this);
     document.querySelector(".element__image").addEventListener("click", this.open);
+    console.log(lightbox);
+    document.querySelector(".element__image").addEventListener("click", lightbox.open);
   }
 }
