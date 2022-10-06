@@ -23,12 +23,12 @@ export default class PopupWithImage extends Popup {
 /*
   close () {
     super.close();
-  }
+  }*/
 
   _handleEscClose() {
     super._handleEscClose();
 
-  }*/
+  }
 
   setEvenListeners () {
     super.setEvenListeners();

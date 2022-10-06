@@ -17,10 +17,6 @@ const validator = new FormValidator (formList, inputList);
 })();
 
 
-
-
-
-
 const initialCard = new Section ({
   data: initialCards,
   renderer: (data) => {
@@ -36,8 +32,6 @@ const initialCard = new Section ({
 
 initialCard.renderItems();
 
-
-
 export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile);
 //profileFormEdit.open();
 
@@ -49,9 +43,5 @@ export const lightbox = new PopupWithImage ("popup");
 lightbox.setEvenListeners();
 
 //const userData = new UserInfo (person, desc);
-
-
-
-
 
 documentEventListeners ();

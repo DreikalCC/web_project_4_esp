@@ -2,7 +2,7 @@ import {Popup} from "./Popup.js"
 //import { profileEditor, galleryEditor } from "./utils.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, callback, form) {
+  constructor(popupSelector, callback) {
     super(popupSelector);
     this.callback = callback;
 
