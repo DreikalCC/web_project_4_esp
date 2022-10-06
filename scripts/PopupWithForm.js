@@ -5,37 +5,32 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, callback, form) {
     super(popupSelector);
     this.callback = callback;
-    this.selector = popupSelector;
-    this.form = form;
+
   }
 
-  open () {
+/*  open () {
     super.open();
-  }
+  }*/
 
   close () {
+    document.querySelectorAll('input').forEach(input => input.value ='');
     super.close();
     //console.log(this);
-
-    document.querySelector(`#${this.selector}`).querySelectorAll('input').forEach(input => input.value ='');
+    //document.querySelector(`#${this.selector}`).querySelectorAll('input').forEach(input => input.value ='');
   }
 
-  _handleEscClose () {
+/*  _handleEscClose () {
     super._handleEscClose();
-  }
+  }*/
 
   setEvenListeners () {
     super.setEvenListeners();
-
-    //const closeButton = document.querySelector(`.${this.selector}__close`);
-    //console.log(this);
-    //closeButton.addEventListener("click", this.close);
-    this.form.addEventListener("submit",this.callback)
   }
 
-  _getInputValues(){
-    //document.querySelector(`#${this.selector}`).querySelector(".input__name").textContent = newName.value;
-    //document.querySelector(`#${this.selector}`).querySelector(".input__description").textContent = newDesc.value;
+  _getInputValues () {
+    const inputs = this._container.querySelectorAll(".input__form");
+    const inputValues = [""];
+    inputs.forEach(field => {inputValues[field.data] = field.value;} );
   }
 
 }

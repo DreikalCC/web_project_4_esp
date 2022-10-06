@@ -1,7 +1,7 @@
 import {Card} from "./Card.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
-import { profileFormEdit, addCardForm } from "./index.js";
+import { profileFormEdit, addCardForm, lightbox} from "./index.js";
 import Section from "./Section.js";
 
 export const editButton = document.querySelector('.profile__edit-button');
@@ -32,7 +32,7 @@ export const handleSubmitCard = (evt)=>{
       const card = new Card(data)
       const cardElement = card.createCardElement();
       newCard.setItem(cardElement);
-
+      lightbox.setEvenListeners();
     }
   },
   //cardContainer
@@ -41,10 +41,12 @@ export const handleSubmitCard = (evt)=>{
   newCard.renderItems();
   addCardForm.close();
 }
-export const handleSubmitProfile = ()=>{
+export const handleSubmitProfile = () =>{
   //evt.preventDefault()
   const user = new UserInfo (newName.value, newDesc.value);
   user.setUserInfo();
+  profileFormEdit.close();
+
 }
 export const initialCards = [
   {
@@ -72,6 +74,9 @@ export const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg"
   }
 ];
+
+
+
 
 export function documentEventListeners () {
 

@@ -8,7 +8,7 @@ import Section from "./Section.js";
 import {editButton, addButton, closeButton, closeGallery, submitGallery, submitProfileButton, closePopup, profileEditor,
   galleryEditor, documentEventListeners, /*editProfile, createPlaceForm,*/ /*closeProfileEdit, closeGalleryEdit, changeProfileData,*/
   /*createNewCardInfo,*/ newDesc, newName, popScreen, /*closeCardView,*/ person, desc, /*profileInputs, galleryInputs,*/ initialCards,
-  handleSubmitCard, handleSubmitProfile, galleryEdit} from "./utils.js";
+  handleSubmitCard, handleSubmitProfile, galleryEdit, profileEdit} from "./utils.js";
 
 (function initiateValidation () {
 const formList = Array.from(document.querySelectorAll(".edit__form"));
@@ -18,14 +18,8 @@ const validator = new FormValidator (formList, inputList);
 
 
 
-documentEventListeners ();
-/*
-(function createInitialCards (){
-  initialCards.forEach( (data) => {const card = new Card (data)} )
-})();
-*/
 
-//const cardContainer = document.querySelector(".elements");
+
 
 const initialCard = new Section ({
   data: initialCards,
@@ -37,7 +31,6 @@ const initialCard = new Section ({
     initialCard.setItem(cardElement);
   }
 },
-//cardContainer
 ".elements"
 );
 
@@ -45,16 +38,20 @@ initialCard.renderItems();
 
 
 
-export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile, profileEditor);
+export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile);
 //profileFormEdit.open();
 
-export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard, galleryEdit);
+export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard);
 //addCardForm.open();
 
 export const lightbox = new PopupWithImage ("popup");
-console.log(lightbox);
+//console.log(lightbox);
 lightbox.setEvenListeners();
 
-const userData = new UserInfo (person, desc);
+//const userData = new UserInfo (person, desc);
 
 
+
+
+
+documentEventListeners ();
