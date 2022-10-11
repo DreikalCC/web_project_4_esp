@@ -1,6 +1,6 @@
 import {Card} from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
-import { profileFormEdit, addCardForm, lightbox} from "./index.js";
+import { profileFormEdit, addCardForm, lightbox} from "../index.js";
 import Section from "../components/Section.js";
 
 export const editButton = document.querySelector('.profile__edit-button');

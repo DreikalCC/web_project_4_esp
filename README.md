@@ -1,4 +1,4 @@
-# Proyecto 7: Alrededor de los Estados Unidos (Continuación)
+# Proyecto 8: Alrededor de los Estados Unidos (Continuación)
 
 ### Descripción general
 

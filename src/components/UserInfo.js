@@ -1,4 +1,4 @@
-import { person, desc } from "../scripts/utils.js";
+import { person, desc } from "../utils/utils.js";
 
 export default class UserInfo {
   constructor(name, job){
