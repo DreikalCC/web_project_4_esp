@@ -1,13 +1,12 @@
-import {Card} from "./Card.js";
-import {FormValidator} from "./FormValidator.js";
-import {Popup} from "./Popup.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
-import UserInfo from "./UserInfo.js";
-import Section from "./Section.js";
+import {Card} from "../components/Card.js";
+import {FormValidator} from "../components/FormValidator.js";
+import {Popup} from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
+import Section from "../components/Section.js";
 import {editButton, addButton, closeButton, closeGallery, submitGallery, submitProfileButton, closePopup, profileEditor,
-  galleryEditor, documentEventListeners, /*editProfile, createPlaceForm,*/ /*closeProfileEdit, closeGalleryEdit, changeProfileData,*/
-  /*createNewCardInfo,*/ newDesc, newName, popScreen, /*closeCardView,*/ person, desc, /*profileInputs, galleryInputs,*/ initialCards,
+  galleryEditor, documentEventListeners, newDesc, newName, popScreen, person, desc, initialCards,
   handleSubmitCard, handleSubmitProfile, galleryEdit, profileEdit} from "./utils.js";
 
 (function initiateValidation () {
@@ -33,15 +32,10 @@ const initialCard = new Section ({
 initialCard.renderItems();
 
 export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile);
-//profileFormEdit.open();
 
 export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard);
-//addCardForm.open();
 
 export const lightbox = new PopupWithImage ("popup");
-//console.log(lightbox);
 lightbox.setEvenListeners();
-
-//const userData = new UserInfo (person, desc);
 
 documentEventListeners ();

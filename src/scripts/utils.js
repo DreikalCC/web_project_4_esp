@@ -1,8 +1,7 @@
-import {Card} from "./Card.js";
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
+import {Card} from "../components/Card.js";
+import UserInfo from "../components/UserInfo.js";
 import { profileFormEdit, addCardForm, lightbox} from "./index.js";
-import Section from "./Section.js";
+import Section from "../components/Section.js";
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');
@@ -35,19 +34,18 @@ export const handleSubmitCard = (evt)=>{
       lightbox.setEvenListeners();
     }
   },
-  //cardContainer
-  ".elements"
+    ".elements"
   );
   newCard.renderItems();
   addCardForm.close();
 }
+
 export const handleSubmitProfile = () =>{
-  //evt.preventDefault()
   const user = new UserInfo (newName.value, newDesc.value);
   user.setUserInfo();
   profileFormEdit.close();
-
 }
+
 export const initialCards = [
   {
     nombre: "Valle de Yosemite",
@@ -84,17 +82,14 @@ export function documentEventListeners () {
     profileFormEdit.open();
   });
 
-
   submitProfileButton.addEventListener("click", ()=>{
     handleSubmitProfile();
     profileFormEdit.close();
   });
 
-
   addButton.addEventListener("click", ()=>{
     addCardForm.open();
   });
-
 
   submitGallery.addEventListener("click", handleSubmitCard);
 

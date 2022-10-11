@@ -2,7 +2,6 @@ export class Card {
   constructor({nombre, link}){
     this.nombre = nombre;
     this.link = link;
-    //this.cardElement = this.createCardElement();
     this.popScreen = document.querySelector(".popup");
   }
 
@@ -33,11 +32,7 @@ export class Card {
 
     card.append(cardPic, eraseButton, cardInfo);
 
-    //this.cardContainer.prepend(card);
-
     card.querySelector(".element__like").addEventListener("click", this._likeTheCard);
-
-    //card.querySelector(".element__image").addEventListener("click", this._viewTheCard);
 
     card.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
 

@@ -1,5 +1,5 @@
 import {Popup} from "./Popup.js"
-//import { profileEditor, galleryEditor } from "./utils.js";
+import { FormValidator } from "./FormValidator.js";
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, callback) {
@@ -8,23 +8,17 @@ export default class PopupWithForm extends Popup {
 
   }
 
-/*  open () {
-    super.open();
-  }*/
-
   close () {
     document.querySelectorAll('input').forEach(input => input.value ='');
     super.close();
-    //console.log(this);
-    //document.querySelector(`#${this.selector}`).querySelectorAll('input').forEach(input => input.value ='');
+    const formList = Array.from(document.querySelectorAll(".edit__form"));
+    const inputList = Array.from(document.querySelectorAll(".input__form"));
+    const validator = new FormValidator (formList, inputList);
   }
 
-/*  _handleEscClose () {
-    super._handleEscClose();
-  }*/
-
-  setEvenListeners () {
+  setEvenListeners  ()  {
     super.setEvenListeners();
+    this._getInputValues();
   }
 
   _getInputValues () {
