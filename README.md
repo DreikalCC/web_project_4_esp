@@ -2,6 +2,6 @@
 
 ### Descripción general
 
-En este proyecto se implementó el uso de clases para la creación de las tarjetas, se dividio el codigo JS en modulos y se exportaron e importaron sus contenidos para la correcta ejecución de la pagina.
+En este proyecto se implementó el uso de clases para la crear un bajo acoplamiento entre las distintas partes del codigo y sus funciones, se instaló y configuró el empaquetado del proyecto utilizando el webpack, se instaló un servidor local para provar la pagina durante su desarrollo.
 
 Enlace para la publicación de la pagina: https://dreikalcc.github.io/web_project_4_esp/
