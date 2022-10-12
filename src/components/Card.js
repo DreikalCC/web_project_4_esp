@@ -3,40 +3,20 @@ export class Card {
     this.nombre = nombre;
     this.link = link;
     this.popScreen = document.querySelector(".popup");
+    this.cardContainer = document.querySelector(".elements");
   }
 
   createCardElement (){
-    this.cardContainer = document.querySelector(".elements");
-    const card = document.createElement('div');
-    card.classList.add('element');
+    const cardTemplate = document.querySelector("#card").content;
+    const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
+    cardElement.querySelector(".element__location").textContent = this.nombre;
+    cardElement.querySelector(".element__image").alt = this.nombre;
+    cardElement.querySelector(".element__image").src = this.link;
+    cardElement.querySelector(".element__like").addEventListener("click", this._likeTheCard);
+    cardElement.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
 
-    const cardPic = document.createElement('img');
-    cardPic.classList.add('element__image');
-    cardPic.src = this.link;
-    cardPic.alt = this.nombre;
-
-    const eraseButton = document.createElement('button');
-    eraseButton.classList.add('element__erase');
-
-    const cardInfo = document.createElement('div');
-    cardInfo.classList.add('element__group');
-
-    const cardName = document.createElement('h3');
-    cardName.classList.add('element__location');
-    cardName.textContent = this.nombre;
-
-    const likeButton = document.createElement('button');
-    likeButton.classList.add('element__like');
-
-    cardInfo.append(cardName, likeButton);
-
-    card.append(cardPic, eraseButton, cardInfo);
-
-    card.querySelector(".element__like").addEventListener("click", this._likeTheCard);
-
-    card.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
-
-    return card;
+    this.cardContainer.prepend(cardElement);
+    return cardElement;
   }
 
   _likeTheCard = (evt) => {

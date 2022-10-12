@@ -13,8 +13,8 @@ export default class UserInfo {
     }
     return userInfo
   }
-  setUserInfo () {
-    person.textContent = this.name;
-    desc.textContent = this.job;
+  setUserInfo (newUserName, newUserDesc) {
+    person.textContent = newUserName;
+    desc.textContent = newUserDesc;
   }
 }

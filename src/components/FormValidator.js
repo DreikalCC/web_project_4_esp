@@ -2,16 +2,12 @@ export class FormValidator{
   constructor(form, input){
     this.form = form;
     this.input = input;
-    this.FormValidation = this.enableValidation();
   }
 
   enableValidation () {
-    this.form.forEach((formElement) => {
-      formElement.addEventListener("submit", (evt)=>{evt.preventDefault();});
-      this._setEventListeners(formElement);
-    })
-
-  }
+    this.form.addEventListener("submit", (evt)=>{evt.preventDefault();});
+      this._setEventListeners(this.form);
+    }
 
   _setEventListeners (formElement) {
     const _inputList = Array.from(formElement.querySelectorAll(".input__form"));

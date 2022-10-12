@@ -1,7 +1,8 @@
 import {Card} from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
-import { profileFormEdit, addCardForm, lightbox} from "../index.js";
+import { userProfile,profileFormEdit, addCardForm, initialCard, lightbox} from "../page/index.js";
 import Section from "../components/Section.js";
+import { FormValidator } from "../components/FormValidator.js";
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');
@@ -25,24 +26,24 @@ export const galleryEdit = document.querySelector('.edit__form_gallery');
 
 export const handleSubmitCard = (evt)=>{
   evt.preventDefault();
-  const newCard = new Section ({
-    data: [{nombre: newCardName.value, link: newCardLink.value}],
-    renderer: (data) => {
-      const card = new Card(data)
-      const cardElement = card.createCardElement();
-      newCard.setItem(cardElement);
-      lightbox.setEvenListeners();
-    }
-  },
-    ".elements"
-  );
-  newCard.renderItems();
+  const info = {nombre: newCardName.value, link: newCardLink.value}
+  //const newCard = (info) =>{
+    const cardElement = createCard(info);
+    initialCard.setItem(cardElement);
+    lightbox.setEvenListeners();
+    //}
+  //initialCard.renderItems();
   addCardForm.close();
 }
 
+export const createCard = (data) => {
+  const card = new Card (data);
+  const cardElement = card.createCardElement();
+  return cardElement;
+}
+
 export const handleSubmitProfile = () =>{
-  const user = new UserInfo (newName.value, newDesc.value);
-  user.setUserInfo();
+  userProfile.setUserInfo(newName.value, newDesc.value);
   profileFormEdit.close();
 }
 
@@ -73,35 +74,20 @@ export const initialCards = [
   }
 ];
 
-
-
-
 export function documentEventListeners () {
-
   editButton.addEventListener("click", ()=>{
     profileFormEdit.open();
-  });
-
-  submitProfileButton.addEventListener("click", ()=>{
-    handleSubmitProfile();
-    profileFormEdit.close();
   });
 
   addButton.addEventListener("click", ()=>{
     addCardForm.open();
   });
-
-  submitGallery.addEventListener("click", handleSubmitCard);
-
-  document.addEventListener("keydown", function(evt){
-    if (evt.key == "Enter" && profileEditor.classList.contains("edit_active")){
-      ()=>{
-        handleSubmitProfile();
-      };
-    }
-    if (evt.key == "Enter" && galleryEditor.classList.contains("gallery_active")){
-      handleSubmitCard();
-    }
-  })
-
 }
+
+export function initiateValidation () {
+  Array.from(document.querySelectorAll(".edit__form")).forEach((form)=>{
+    const inputList = Array.from(form.querySelectorAll(".input__form"));
+    const validator = new FormValidator (form, inputList);
+    validator.enableValidation();
+  })
+};

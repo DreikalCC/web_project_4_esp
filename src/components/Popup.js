@@ -7,13 +7,13 @@ export class Popup {
   }
 
   open  ()  {
-    this._container.classList.add(`${this.selector}_active`);
+    this._container.classList.add("popup_active");
     this.setEvenListeners();
     this._handleEscClose();
   }
 
   close () {
-    this._container.classList.remove(`${this.selector}_active`);
+    this._container.classList.remove("popup_active");
   }
 
   _handleEscClose  ()  {
