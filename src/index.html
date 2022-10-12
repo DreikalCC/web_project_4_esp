@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Around The U.S.</title>
-  <link rel="stylesheet" href="./index.css">
+  <!--<link rel="stylesheet" href="./index.css">-->
   <link rel="stylesheet" href="./fonts/Inter-3.19/InterWeb/inter.css">
 </head>
 
@@ -76,12 +76,12 @@
 
 
   <header class="header">
-    <img class="header__logo" src="./images/Vector.png" alt="Around the US">
-    <img class="header__line" src="./images/Line.png" alt="underline">
+    <img class="header__logo" src="<%=require('./images/Vector.png')%>" alt="Around the US">
+    <img class="header__line" src="<%=require('./images/Line.png')%>" alt="underline">
   </header>
 
   <section class="profile">
-    <img class="profile__pic" src="./images/jack.jpg" alt="Foto de perfil">
+    <img class="profile__pic" src="<%=require('./images/jack.jpg')%>" alt="Foto de perfil">
     <div class="profile__info">
       <h1 class="profile__name">Cousteau</h1>
       <button class="profile__info profile__edit-button"></button>
