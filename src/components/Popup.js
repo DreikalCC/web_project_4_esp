@@ -2,8 +2,8 @@ export class Popup {
   constructor(popupSelector) {
     this._container = document.querySelector(`#${popupSelector}`);
     this.selector = popupSelector;
-    this.closeButton = this._container.querySelector(`.${this.selector}__close`);
-    this.overlay = this._container.querySelector(`.${this.selector}__overlay`);
+    this.closeButton = this._container.querySelector(`#${this.selector}__close`);
+    this.overlay = this._container.querySelector(`#${this.selector}__overlay`);
   }
 
   open  ()  {
