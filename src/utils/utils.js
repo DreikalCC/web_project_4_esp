@@ -27,12 +27,9 @@ export const galleryEdit = document.querySelector('.edit__form_gallery');
 export const handleSubmitCard = (evt)=>{
   evt.preventDefault();
   const info = {nombre: newCardName.value, link: newCardLink.value}
-  //const newCard = (info) =>{
-    const cardElement = createCard(info);
-    initialCard.setItem(cardElement);
-    lightbox.setEvenListeners();
-    //}
-  //initialCard.renderItems();
+  const cardElement = createCard(info);
+  initialCard.setItem(cardElement);
+  lightbox.setEvenListeners();
   addCardForm.close();
 }
 

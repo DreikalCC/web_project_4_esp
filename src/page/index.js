@@ -43,8 +43,8 @@ export const userProfile = new UserInfo (newName.value, newDesc.value);
 documentEventListeners ();
 
 const profileImage = document.querySelector(".profile__pic");
-//profileImage.src = profileSrc;
+profileImage.src = profileSrc;
 const aroundImage = document.querySelector(".header__logo");
-//aroundImage.src = aroundSrc;
+aroundImage.src = aroundSrc;
 const underlineImage = document.querySelector(".header__line");
-//underlineImage.src = underlineSrc;
+underlineImage.src = underlineSrc;
