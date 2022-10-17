@@ -1,22 +1,21 @@
 export class Card {
-  constructor({nombre, link}){
+  constructor({nombre, link, template, imageOpener}){
     this.nombre = nombre;
     this.link = link;
-    this.popScreen = document.querySelector(".popup");
+    this.template = template;
+    this.imageOpener = imageOpener;
     this.cardContainer = document.querySelector(".elements");
+    this._cardElement = this.template.querySelector(".element").cloneNode(true);
   }
 
   createCardElement (){
-    const cardTemplate = document.querySelector("#card").content;
-    const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
-    cardElement.querySelector(".element__location").textContent = this.nombre;
-    cardElement.querySelector(".element__image").alt = this.nombre;
-    cardElement.querySelector(".element__image").src = this.link;
-    cardElement.querySelector(".element__like").addEventListener("click", this._likeTheCard);
-    cardElement.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
-
-    this.cardContainer.prepend(cardElement);
-    return cardElement;
+    this._cardElement.querySelector(".element__location").textContent = this.nombre;
+    this._cardElement.querySelector(".element__image").alt = this.nombre;
+    this._cardElement.querySelector(".element__image").src = this.link;
+    this._cardElement.querySelector(".element__like").addEventListener("click", this._likeTheCard);
+    this._cardElement.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
+    this._cardElement.querySelector(".element__image").addEventListener("click", (evt)=>{this.imageOpener(evt);})
+    return this._cardElement;
   }
 
   _likeTheCard = (evt) => {
@@ -24,20 +23,9 @@ export class Card {
     _likeButton.classList.toggle("element__liked");
   }
 
-  _viewTheCard = (evt) => {
-    const image = evt.target;
-    this.popScreen.classList.add("popup__active");
-    this.popScreen.querySelector(".popup__image").src = image.getAttribute("src");
-    this.popScreen.querySelector(".popup__image").alt = image.getAttribute("alt");
-    this.popScreen.querySelector(".popup__name").textContent = image.getAttribute("alt");
-  }
-
   _eraseTheCard = () => {
-    this.eraseButton = this.cardContainer.querySelector(".element__erase");
-    this.cardContainer.querySelector(".element__like").removeEventListener("click", this._likeTheCard);
-    this.cardContainer.querySelector(".element__image").removeEventListener("click", this._viewTheCard);
-    this.cardContainer.querySelector(".element__erase").removeEventListener("click", this._eraseTheCard);
-    this.eraseButton.closest(".element").remove();
+    this._cardElement.remove();
+    this._cardElement = null
   }
 
 }

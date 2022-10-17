@@ -2,30 +2,39 @@ export class Popup {
   constructor(popupSelector) {
     this._container = document.querySelector(`#${popupSelector}`);
     this.selector = popupSelector;
-    this.closeButton = this._container.querySelector(`#${this.selector}__close`);
-    this.overlay = this._container.querySelector(`#${this.selector}__overlay`);
+    this.closeButton = this._container.querySelector(".popup__close");
+    this.overlay = this._container.querySelector('.popup__overlay');
+    this._setListeners = this.setEventListeners();
+    //this._escListener = this._handleEscClose();
   }
 
   open  ()  {
+    //console.log(this)
     this._container.classList.add("popup_active");
-    this.setEvenListeners();
     this._handleEscClose();
+    //this.setEventListeners();
   }
 
   close () {
     this._container.classList.remove("popup_active");
+    document.removeEventListener("keydown", this.escPressed)
+    /*document.removeEventListener("keydown", (evt) => {
+      if (evt.key === "Escape")
+      this.close();
+    })*/
   }
 
   _handleEscClose  ()  {
-    document.addEventListener("keydown", (evt) => {
+    this.escPressed = (evt) => {
       if (evt.key === "Escape"){
         this.close();
       }
-    })
+    }
+    document.addEventListener("keydown", this.escPressed)
 
   }
 
-  setEvenListeners  ()  {
+  setEventListeners  ()  {
     this.closeButton.addEventListener("click", this.close.bind(this));
     this.overlay.addEventListener("click", this.close.bind(this));
   }

@@ -3,28 +3,16 @@ import {Popup} from "./Popup.js"
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
+    this.image = this._container.querySelector('.popup__image');
+    this.text = this._container.querySelector('.popup__name');
   }
 
   open (evt) {
-    this._container = document.querySelector("#popup");
-    this._container.classList.add(`popup_active`);
-    this.data = document.querySelector(".popup__group");
+    super.open();
+    console.log(this._container)
     const image = evt.target;
-    this.data.querySelector(".popup__image").src = image.getAttribute("src");
-    this.data.querySelector(".popup__image").alt = image.getAttribute("alt");
-    this.data.querySelector(".popup__name").textContent = image.getAttribute("alt");
-  }
-
-  _handleEscClose() {
-    super._handleEscClose();
-  }
-
-  setEvenListeners () {
-    this._handleEscClose();
-    super.setEvenListeners();
-    const imageElement = document.querySelectorAll(".element__image");
-    imageElement.forEach( img => {
-      img.addEventListener("click", this.open);
-    });
+    this.image.src = image.getAttribute("src");
+    this.image.alt = image.getAttribute("alt");
+    this.text.textContent = image.getAttribute("alt");
   }
 }

@@ -12,7 +12,7 @@ export class FormValidator{
   _setEventListeners (formElement) {
     const _inputList = Array.from(formElement.querySelectorAll(".input__form"));
     const _buttonElement =formElement.querySelector(".edit__submit-btn");
-    this._toggleButtonState(this.input, _buttonElement);
+    this._toggleButtonState(_inputList, _buttonElement);
     _inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {this._checkInputValidity(formElement,inputElement);
       this._toggleButtonState(_inputList, _buttonElement);})

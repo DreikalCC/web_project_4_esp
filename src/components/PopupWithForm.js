@@ -1,29 +1,34 @@
 import {Popup} from "./Popup.js"
-import { initiateValidation } from "../utils/utils.js";
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, callback) {
     super(popupSelector);
     this.callback = callback;
     this.submitButton = this._container.querySelector(".edit__submit-btn");
+    this._form = this._container.querySelector('form');
+    this._inputFields = this._container.querySelectorAll(".input__form");
   }
 
   close () {
-    document.querySelectorAll('input').forEach(input => input.value ='');
+    this._form.reset();
     super.close();
-    initiateValidation();
   }
 
-  setEvenListeners  ()  {
-    super.setEvenListeners();
-    this.submitButton.addEventListener("click", this.callback);
-    this._getInputValues();
+  setEventListeners  ()  {
+    super.setEventListeners();
+    //console.log(this);
+    //this.submitButton.addEventListener("click", this.callback);
   }
 
-  _getInputValues () {
-    const inputs = this._container.querySelectorAll(".input__form");
-    const inputValues = [""];
-    inputs.forEach(field => {inputValues[field.data] = field.value;} );
+    _getInputValues () {
+    const inputValues = {};
+    this._inputFields.forEach(field => {inputValues[field.data] = field.value;} );
+  }
+
+  setInputValues (data) {
+    this._inputFields.forEach((input) =>{
+      input.value = data[input.name];
+    })
   }
 
 }

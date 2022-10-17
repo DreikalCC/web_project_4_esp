@@ -4,30 +4,20 @@ import underlineSrc from "../images/Line.png";
 import aroundSrc from "../images/Vector.png";
 
 
-import {Card} from "../components/Card.js";
-import {FormValidator} from "../components/FormValidator.js";
-import {Popup} from "../components/Popup.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import {editButton, addButton, closeButton, closeGallery, submitGallery, submitProfileButton, closePopup, profileEditor,
-  galleryEditor, documentEventListeners, newDesc, newName, popScreen, person, desc, initialCards,
-  handleSubmitCard, handleSubmitProfile, galleryEdit, profileEdit, createCard, initiateValidation} from "../utils/utils.js";
-
+//utils
+import {handleSubmitProfile, initialCard, handleSubmitCard, createCard, initiateValidation} from "../utils/utils.js";
+//consts
+import {cardTemplate, editButton, addButton, closeButton, closeGallery, submitGallery, submitProfileButton, closePopup, profileEditor, galleryEditor, newDesc, newName, popScreen, person, desc, initialCards, galleryEdit, profileEdit } from "../utils/constants.js"
 
 
 initiateValidation();
-
-export const initialCard = new Section ({
-  data: initialCards,
-  renderer: (data) => {
-    const cardElement = createCard(data);
-    initialCard.setItem(cardElement);
-  }
-},
-".elements"
-);
 
 initialCard.renderItems();
 
@@ -36,11 +26,19 @@ export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile);
 export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard);
 
 export const lightbox = new PopupWithImage ("popup");
-lightbox.setEvenListeners();
 
-export const userProfile = new UserInfo (newName.value, newDesc.value);
+export const userProfile = new UserInfo ();
 
-documentEventListeners ();
+(function documentEventListeners () {
+  editButton.addEventListener("click", ()=>{
+    profileFormEdit.open();
+  });
+
+  addButton.addEventListener("click", ()=>{
+    addCardForm.open();
+  });
+})();
+
 
 const profileImage = document.querySelector(".profile__pic");
 profileImage.src = profileSrc;
