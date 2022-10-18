@@ -3,24 +3,13 @@ import profileSrc from "../images/jack.jpg";
 import underlineSrc from "../images/Line.png";
 import aroundSrc from "../images/Vector.png";
 
-
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import {settings ,cardTemplate, editButton, addButton, initialCards, galleryEdit, profileEdit, newName, newDesc, person, desc } from "../utils/constants.js"
-
-/*
-const initiateValidation= ()=> {
-  const profileValidator = new FormValidator (profileEdit, settings);
-  profileValidator.enableValidation();
-  const galleryValidator = new FormValidator (galleryEdit, settings)
-  galleryValidator.enableValidation();
-};
-initiateValidation();*/
+import {settings ,cardTemplate, editButton, addButton, initialCards, newName, newDesc, person, desc } from "../utils/constants.js"
 
 const formValidators = {}
 
@@ -43,7 +32,6 @@ export const initialCard = new Section ({
   data: initialCards,
   renderer: (data) => {
     const cardElement = createCard(data);
-    //console.log(data);
     initialCard.setItem(cardElement);
   }
 },
@@ -54,13 +42,8 @@ export const handleSubmitCard = (info)=>{
   console.log(info);
   const cardElement = createCard(info);
   initialCard.setItem(cardElement);
-  lightbox.setEventListeners();
   addCardForm.close();
 }
-
-
-
-
 
 export const handleSubmitProfile = ({name, desc}) =>{
   userProfile.setUserInfo(name, desc);
@@ -73,25 +56,15 @@ export const lightbox = new PopupWithImage ("popup");
 
 export const createCard = (data) => {
   const card = new Card ({name: data.name, link:data.link, template:cardTemplate, imageOpener:(evt)=>{lightbox.open(evt)}});
-  console.log(data);
   const cardElement = card.createCardElement();
   return cardElement;
 }
-
-
-
-
-
 
 initialCard.renderItems();
 
 export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard);
 
 export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile);
-
-//export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard);
-
-//export const lightbox = new PopupWithImage ("popup");
 
 export const userProfile = new UserInfo (person, desc);
 
@@ -109,14 +82,6 @@ export const userProfile = new UserInfo (person, desc);
     addCardForm.open();
   });
 })();
-
-
-
-
-
-
-
-
 
 const profileImage = document.querySelector(".profile__pic");
 profileImage.src = profileSrc;

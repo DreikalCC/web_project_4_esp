@@ -5,19 +5,16 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this.callback = callback;
     this.submitButton = this._container.querySelector(".edit__submit-btn");
-    this._form = this._container.querySelector(".edit__form");
     this._inputFields = this._container.querySelectorAll(".input__form");
   }
 
   close () {
-    console.log(this._form)
-    this._form.reset();
+    this._container.querySelector(".edit__form").reset();
     super.close();
   }
 
   setEventListeners  ()  {
     super.setEventListeners();
-    console.log(this._form)
     this._container.querySelector(".edit__form").addEventListener("submit",(evt) => {
       evt.preventDefault();
       this.callback(this._getInputValues());
@@ -25,17 +22,9 @@ export default class PopupWithForm extends Popup {
   }
 
     _getInputValues () {
-      console.log(this)
     const inputValues = {};
     this._inputFields.forEach(field => {inputValues[field.name] = field.value;} );
     console.log(inputValues)
     return inputValues;
   }
-
-  /*setInputValues (data) {
-    this._inputFields.forEach((input) =>{
-      input.value = data[input.name];
-    })
-  }*/
-
 }
