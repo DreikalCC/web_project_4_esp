@@ -9,7 +9,6 @@ export default class PopupWithImage extends Popup {
 
   open (evt) {
     super.open();
-    console.log(this._container)
     const image = evt.target;
     this.image.src = image.getAttribute("src");
     this.image.alt = image.getAttribute("alt");

@@ -18,31 +18,37 @@ export const profileEdit = document.querySelector('.edit__form');
 export const galleryEdit = document.querySelector('.edit__form_gallery');
 export const cardTemplate = document.querySelector("#card").content;
 
-
+export const settings = {
+  submitButton: ".edit__submit-btn",
+  submitButtonDisabled: "edit__submit-btn_inactive",
+  inputSelector: ".input__form",
+  errorArea: "input__form_type-error",
+  errorActive: "input__form-error_active"
+};
 
 export const initialCards = [
   {
-    nombre: "Valle de Yosemite",
+    name: "Valle de Yosemite",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
   },
   {
-    nombre: "Lago Louise",
+    name: "Lago Louise",
     link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
   },
   {
-    nombre: "Montañas Calvas",
+    name: "Montañas Calvas",
     link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
   },
   {
-    nombre: "Latemar",
+    name: "Latemar",
     link: "https://code.s3.yandex.net/web-code/latemar.jpg"
   },
   {
-    nombre: "Parque Nacional de la Vanoise",
+    name: "Parque Nacional de la Vanoise",
     link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
   },
   {
-    nombre: "Lago di Braies",
+    name: "Lago di Braies",
     link: "https://code.s3.yandex.net/web-code/lago.jpg"
   }
 ];
