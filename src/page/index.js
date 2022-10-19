@@ -71,8 +71,8 @@ export const userProfile = new UserInfo (person, desc);
 (function documentEventListeners () {
   editButton.addEventListener("click", ()=>{
     const userInfo = userProfile.getUserInfo();
-    newName.textContent = userInfo.name;
-    newDesc.textContent = userInfo.job;
+    newName.value = userInfo.name;
+    newDesc.value = userInfo.job;
     formValidators['profile'].resetValidation();
     profileFormEdit.open();
   });

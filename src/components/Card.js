@@ -4,18 +4,22 @@ export default class Card {
     this.link = link;
     this.template = template;
     this.imageOpener = imageOpener;
-    this.cardContainer = document.querySelector(".elements");
     this._cardElement = this.template.querySelector(".element").cloneNode(true);
+    this._cardImage = this._cardElement.querySelector(".element__image");
   }
 
   createCardElement () {
     this._cardElement.querySelector(".element__location").textContent = this.name;
-    this._cardElement.querySelector(".element__image").alt = this.name;
-    this._cardElement.querySelector(".element__image").src = this.link;
+    this._cardImage.alt = this.name;
+    this._cardImage.src = this.link;
+    this._setEventListeners();
+    return this._cardElement;
+  }
+
+  _setEventListeners () {
     this._cardElement.querySelector(".element__like").addEventListener("click", this._likeTheCard);
     this._cardElement.querySelector(".element__erase").addEventListener("click", this._eraseTheCard);
-    this._cardElement.querySelector(".element__image").addEventListener("click", (evt)=>{this.imageOpener(evt);})
-    return this._cardElement;
+    this._cardImage.addEventListener("click", (evt)=>{this.imageOpener(evt);})
   }
 
   _likeTheCard = (evt) => {

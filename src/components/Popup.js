@@ -4,7 +4,7 @@ export class Popup {
     this.selector = popupSelector;
     this.closeButton = this._container.querySelector(`#${popupSelector}__close`);
     this.overlay = this._container.querySelector('.popup__overlay');
-    this._setListeners = this.setEventListeners();
+    this.setEventListeners();
   }
 
   open  ()  {
