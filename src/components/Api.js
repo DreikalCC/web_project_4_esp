@@ -66,7 +66,7 @@ export default class Api {
 
   postLikes(){
     fetch(`${this.baseUrl}/cards`, {
-      method: "POST",
+      method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
         name: "",

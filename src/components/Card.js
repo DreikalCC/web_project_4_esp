@@ -25,7 +25,14 @@ export default class Card {
 
   _likeTheCard = (evt) => {
     const _likeButton = evt.target;
-    _likeButton.classList.toggle("element__liked");
+    if(_likeButton.classList.contains("element__liked")){
+      _likeButton.classList.remove("element__liked");
+    }
+    else{
+      _likeButton.classList.add("element__liked");
+      const counter = _likeButton.nextElementSibling;
+      counter.textContent = +1;
+    }
   }
 
   _eraseTheCard = () => {
