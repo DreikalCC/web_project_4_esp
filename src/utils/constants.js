@@ -8,6 +8,7 @@ export const person = document.querySelector(".profile__name");
 export const desc = document.querySelector(".profile__description");
 
 export const cardTemplate = document.querySelector("#card").content;
+export const cardArea = document.querySelector(".elements");
 
 export const settings = {
   submitButton: ".edit__submit-btn",

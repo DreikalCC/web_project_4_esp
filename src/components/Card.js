@@ -1,7 +1,8 @@
 export default class Card {
-  constructor({name, link, template, imageOpener}){
+  constructor({name, link, id, template, imageOpener}){
     this.name = name;
     this.link = link;
+    this.id = id;
     this.template = template;
     this.imageOpener = imageOpener;
     this._cardElement = this.template.querySelector(".element").cloneNode(true);
