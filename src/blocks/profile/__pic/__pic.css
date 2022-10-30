@@ -1,10 +1,12 @@
 .profile__pic {
-  border-radius: 100px;
+  border-radius: 50%;
   height: 120px;
+  z-index: 2;
 }
 
-@media screen and (max-width:585px){
-  .profile__pic {
-    justify-self: center;
-  }
+.profile__pic:hover {
+  transition: .5s;
+  opacity: .5;
+  cursor: pointer;
+  z-index: 0;
 }

@@ -10,7 +10,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import {settings ,cardTemplate, editButton, addButton, initialCards, newName, newDesc, person, desc, cardArea } from "../utils/constants.js"
+import {settings ,cardTemplate, editButton, addButton, avatarButton, newName, newDesc, person, desc, cardArea } from "../utils/constants.js"
 
 
 
@@ -97,13 +97,19 @@ export const handleSubmitProfile = ({name, desc}) =>{
   profileFormEdit.close();
 };
 
+export const handleSubmitAvatar = () =>{
+  //api.postUserInfo(url)
+  avatarFormEdit.close();
+};
+
 export const lightbox = new PopupWithImage ("popup");
 
 export const createCard = (data) => {
   const card = new Card ({name: data.name,
     link:data.link,
-    id:data.owner,
+    id:data.owner._id,
     likes:data.likes,
+    likesAmount:data.likes.length,
     template:cardTemplate,
     imageOpener:(evt)=>{lightbox.open(evt)}});
   const cardElement = card.createCardElement();
@@ -115,16 +121,25 @@ export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard);
 
 export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile);
 
+export const avatarFormEdit = new PopupWithForm ("avatar", handleSubmitAvatar);
+//console.log(avatarFormEdit)
+
 export const userProfile = new UserInfo (person, desc);
 
 (function documentEventListeners () {
   editButton.addEventListener("click", ()=>{
     const userInfo = userProfile.getUserInfo();
+    console.log(userInfo)
     newName.value = userInfo.name;
     newDesc.value = userInfo.job;
     formValidators['profile'].resetValidation();
     profileFormEdit.open();
   });
+
+  avatarButton.addEventListener("click", ()=>{
+    formValidators['avatar'].resetValidation();
+    avatarFormEdit.open();
+  })
 
   addButton.addEventListener("click", ()=>{
     formValidators['gallery'].resetValidation();

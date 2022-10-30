@@ -14,7 +14,10 @@
   </header>
 
   <section class="profile">
-    <img class="profile__pic" src="<%=require('./images/jack.jpg')%>" alt="Foto de perfil">
+    <div class="profile__user">
+      <img class="profile__pic" src="<%=require('./images/jack.jpg')%>" alt="Foto de perfil">
+      <button class="profile__avatar-btn"></button>
+    </div>
     <div class="profile__info">
       <h1 class="profile__name">Cousteau</h1>
       <button class="profile__info profile__edit-button"></button>
@@ -34,6 +37,8 @@
       </div>
     </div>
   </section>
+
+
 
   <section id="edit" class="popup edit">
     <form novalidate name="profile" class="edit__form">
@@ -69,7 +74,7 @@
   </section>
 
   <section id="gallery" class="popup edit edit_gallery">
-    <form novalidate name="gallery" class="edit__form edit__form_gallery">
+    <form novalidate name="gallery" class="edit__form">
       <h3 class="edit__title edit__title_gallery">Nuevo lugar</h3>
         <fieldset class="input">
           <label class="input__field">
@@ -89,7 +94,7 @@
             name="link"
             type="url"
             placeholder="URL de la imagen"
-            class="input__form input__description input__description_gallery">
+            class="input__form input__description">
             <span class="input__form-error card-url-input-error"></span>
           </label>
         </fieldset>
@@ -98,6 +103,43 @@
     </form>
     <div class="popup__overlay" id="gallery__overlay"></div>
   </section>
+
+
+
+
+
+
+  <section id="avatar" class="popup edit">
+    <form novalidate name="avatar" class="edit__form">
+      <h3 class="edit__title">Cambiar foto de perfil</h3>
+        <fieldset class="input">
+          <label class="input__field">
+            <input required
+            id="avatar-url-input"
+            name="link"
+            type="url"
+            placeholder="URL de la imagen"
+            class="input__form input__description input__description_gallery">
+            <span class="input__form-error avatar-url-input-error"></span>
+          </label>
+        </fieldset>
+        <button type="submit" class="edit__submit-btn">Guarda</button>
+        <a id="avatar__close" class="popup__close"></a>
+    </form>
+    <div id="avatar__overlay" class="popup__overlay"></div>
+  </section>
+
+  <section id="eraser" class="popup edit">
+    <form novalidate name="card-eraser" class="edit__form">
+      <h3 class="edit__title">¿Estás seguro?</h3>
+      <button type="submit" class="edit__submit-btn">Si</button>
+      <a id="eraser__close" class="popup__close"></a>
+    </form>
+    <div id="eraser__overlay" class="popup__overlay"></div>
+  </section>
+
+
+
 
   <footer class="footer">
     <p class="footer__copyright">© 2021 Alrededor de los EEUU</p>
@@ -111,7 +153,7 @@
         <h3 class="element__location"></h3>
         <div class="element__like-area">
           <button class="element__like"></button>
-          <span class="element__counter">5</span>
+          <span class="element__counter"></span>
         </div>
 
       </div>
