@@ -97,8 +97,8 @@ export const handleSubmitProfile = ({name, desc}) =>{
   profileFormEdit.close();
 };
 
-export const handleSubmitAvatar = () =>{
-  //api.postUserInfo(url)
+export const handleSubmitAvatar = (url) =>{
+  api.postUserAvatar(url)
   avatarFormEdit.close();
 };
 
@@ -107,7 +107,8 @@ export const lightbox = new PopupWithImage ("popup");
 export const createCard = (data) => {
   const card = new Card ({name: data.name,
     link:data.link,
-    id:data.owner._id,
+    id:data._id,
+    ownerId:data.owner._id,
     likes:data.likes,
     likesAmount:data.likes.length,
     template:cardTemplate,

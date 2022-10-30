@@ -1,8 +1,9 @@
 export default class Card {
-  constructor({name, link, id, likes, likesAmount, template, imageOpener}){
+  constructor({name, link, id, ownerId, likes, likesAmount, template, imageOpener}){
     this.name = name;
     this.link = link;
     this.id = id;
+    this.ownerId= ownerId;
     this.likes = likes;
     this.likesAmount = likesAmount;
     this.template = template;

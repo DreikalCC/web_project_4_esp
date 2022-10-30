@@ -28,7 +28,8 @@ export default class Api {
         }
         return Promise.reject(`Error getting user data: ${res.status},
         ${res.statusText}`);
-      });
+      })
+      .catch((err)=>{console.log(err)})
   }
 
   getUserInfo (){
@@ -52,6 +53,17 @@ export default class Api {
     });
   }
 
+  postUserAvatar(link){
+    console.log(link)
+    fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: link
+      })
+    });
+  }
+
   postCard(name,link){
     console.log(name, link)
     fetch(`${this.baseUrl}/cards`, {
@@ -64,8 +76,8 @@ export default class Api {
     });
   }
 
-  postLikes(){
-    fetch(`${this.baseUrl}/cards`, {
+  postLikes(cardId){
+    fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
@@ -75,16 +87,25 @@ export default class Api {
     });
   }
 
-  getLikes(){
-    fetch(`${this.baseUrl}/cards`, {
-      headers: {
-        authorization: this.auth
-      }
-    })
-    .then(res => res.json())
-    .then((result) => {
-      console.log(result);
+  deleteLikes(cardId){
+    fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+      method: "DELETE",
+      headers: this.headers,
+      body: JSON.stringify({
+        name: "",
+        link: ""
+      })
     });
   }
 
+  deleteCard(cardId){
+    fetch(`${this.baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this.headers,
+      body: JSON.stringify({
+        name: "",
+        link: ""
+      })
+    });
+  }
 }
