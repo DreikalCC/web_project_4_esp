@@ -1,11 +1,12 @@
 export default class Card {
-  constructor({name, link, id, ownerId, likes, likesAmount, template, imageOpener}){
+  constructor({name, link, id, owner, likes, template, imageOpener}){
     this.name = name;
     this.link = link;
     this.id = id;
-    this.ownerId= ownerId;
+    this.owner= owner;
+    this._ownerId = this.owner._id;
     this.likes = likes;
-    this.likesAmount = likesAmount;
+    this.likesAmount = this.likes.length;
     this.template = template;
     this.imageOpener = imageOpener;
     this._cardElement = this.template.querySelector(".element").cloneNode(true);
@@ -14,6 +15,7 @@ export default class Card {
   }
 
   createCardElement () {
+    console.log(this._ownerId)
     this._cardElement.querySelector(".element__location").textContent = this.name;
     this._cardImage.alt = this.name;
     this._cardImage.src = this.link;

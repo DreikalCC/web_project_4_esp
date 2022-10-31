@@ -19,6 +19,7 @@ export const settings = {
   errorActive: "input__form-error_active"
 };
 
+
 export const initialCards = [
   {
     name: "Valle de Yosemite",

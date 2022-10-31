@@ -78,12 +78,9 @@ export default class Api {
 
   postLikes(cardId){
     fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: this.headers,
-      body: JSON.stringify({
-        name: "",
-        link: ""
-      })
+      body: JSON.stringify({})
     });
   }
 
@@ -91,10 +88,7 @@ export default class Api {
     fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
-      body: JSON.stringify({
-        name: "",
-        link: ""
-      })
+      body: JSON.stringify({})
     });
   }
 
@@ -102,10 +96,7 @@ export default class Api {
     fetch(`${this.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
-      body: JSON.stringify({
-        name: "",
-        link: ""
-      })
+      body: JSON.stringify({})
     });
   }
 }

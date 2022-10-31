@@ -24,6 +24,13 @@ const api = new Api({
 });
 
 
+const profileImage = document.querySelector(".profile__pic");
+profileImage.src = profileSrc;
+const aroundImage = document.querySelector(".header__logo");
+aroundImage.src = aroundSrc;
+const underlineImage = document.querySelector(".header__line");
+underlineImage.src = underlineSrc;
+
 
 /*
 function loadData(){
@@ -31,13 +38,26 @@ function loadData(){
 loadData();
 */
 
+const getUserData = async ()=> {
+  await api.getUserInfo().then(({name,about,_id})=>{
+  userProfile.setUserInfo(name,about,_id)
+  console.log(userProfile)
+  //return user;
 
-
-api.getUserInfo().then(({name,about})=>{
-  userProfile.setUserInfo(name,about)
 });
+}
 
-api.getInitialCards()
+//userProfile.setUserInfo(user)
+  //console.log()
+
+getUserData();
+
+//console.log(userProfile)
+const cardList = {};
+
+
+const getCards = async () => {
+await api.getInitialCards()
 .then((res)=>{
   console.log(res)
   const initialCard = new Section ({
@@ -45,16 +65,52 @@ api.getInitialCards()
     renderer: (data) => {
       const cardElement = createCard(data);
       initialCard.setItem(cardElement);
+      //cardList = cardElement;
     }
   },
   ".elements"
   );
   initialCard.renderItems()
+  //cardList = initialCard;
+  console.log(cardList)
 });
+}
+getCards();
 
 
 
-const formValidators = {}
+
+/*
+function disableEraser (){
+   getUserData()
+   .then(()=>{getCards()
+    const cardList = document.querySelectorAll(".element__image");
+    console.log(cardList)
+    cardList.forEach((card)=>{
+      console.log(card)
+      if(userProfile._id !== card._id)
+      document.querySelector(".element__erase").disable;
+  })
+   .then(()=>{
+    const cardList = document.querySelectorAll(".element")
+    console.log(cardList)
+    cardList.forEach((card)=>{
+      console.log(card)
+      if(userProfile._id !== card._id)
+      document.querySelector(".element__erase").disable;
+    })
+  })
+
+}
+disableEraser();
+
+
+
+*/
+
+
+
+const formValidators = {};
 
 const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(".edit__form"));
@@ -68,19 +124,15 @@ const enableValidation = (settings) => {
 
 enableValidation(settings);
 
-
-
-
-
-
-
-
+//console.log(formValidators)
 
 export const handleSubmitCard = (info)=>{
-  /*console.log(info);
+  info.owner = userProfile;
+  info.likes = [];
+  console.log(getCards);
   const cardElement = createCard(info);
   initialCard.setItem(cardElement);
-*/
+
 console.log(info)
   api.postCard(info)/*.then((data)=>{
     const cardElement = createCard(data);
@@ -98,7 +150,9 @@ export const handleSubmitProfile = ({name, desc}) =>{
 };
 
 export const handleSubmitAvatar = (url) =>{
-  api.postUserAvatar(url)
+  console.log(url)
+  api.postUserAvatar(url);
+  userProfile.setAvatar(url);
   avatarFormEdit.close();
 };
 
@@ -108,9 +162,8 @@ export const createCard = (data) => {
   const card = new Card ({name: data.name,
     link:data.link,
     id:data._id,
-    ownerId:data.owner._id,
+    owner:data.owner,
     likes:data.likes,
-    likesAmount:data.likes.length,
     template:cardTemplate,
     imageOpener:(evt)=>{lightbox.open(evt)}});
   const cardElement = card.createCardElement();
@@ -147,10 +200,10 @@ export const userProfile = new UserInfo (person, desc);
     addCardForm.open();
   });
 })();
-
+/*
 const profileImage = document.querySelector(".profile__pic");
 profileImage.src = profileSrc;
 const aroundImage = document.querySelector(".header__logo");
 aroundImage.src = aroundSrc;
 const underlineImage = document.querySelector(".header__line");
-underlineImage.src = underlineSrc;
+underlineImage.src = underlineSrc;*/
