@@ -11,7 +11,7 @@ export default class Card {
     this.imageOpener = imageOpener;
     this._cardElement = this.template.querySelector(".element").cloneNode(true);
     this._cardImage = this._cardElement.querySelector(".element__image");
-    this.likeCounter = this.template.querySelector(".element__counter");
+    this.likeCounter = this._cardElement.querySelector(".element__counter");
   }
 
   createCardElement () {

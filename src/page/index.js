@@ -24,12 +24,12 @@ const api = new Api({
 });
 
 
-const profileImage = document.querySelector(".profile__pic");
+/*const profileImage = document.querySelector(".profile__pic");
 profileImage.src = profileSrc;
 const aroundImage = document.querySelector(".header__logo");
 aroundImage.src = aroundSrc;
 const underlineImage = document.querySelector(".header__line");
-underlineImage.src = underlineSrc;
+underlineImage.src = underlineSrc;*/
 
 
 /*
@@ -38,9 +38,10 @@ function loadData(){
 loadData();
 */
 
-const getUserData = async ()=> {
-  await api.getUserInfo().then(({name,about,_id})=>{
-  userProfile.setUserInfo(name,about,_id)
+const getUserData = ()=> {
+  api.getUserInfo().then(({name,about,_id, avatar})=>{
+  userProfile.setUserInfo(name,about,_id,avatar)
+  userProfile.getUserInfo();
   console.log(userProfile)
   //return user;
 
@@ -53,11 +54,11 @@ const getUserData = async ()=> {
 getUserData();
 
 //console.log(userProfile)
-const cardList = {};
+let cardList = {};
 
 
-const getCards = async () => {
-await api.getInitialCards()
+const getCards =  () => {
+api.getInitialCards()
 .then((res)=>{
   console.log(res)
   const initialCard = new Section ({
@@ -65,19 +66,22 @@ await api.getInitialCards()
     renderer: (data) => {
       const cardElement = createCard(data);
       initialCard.setItem(cardElement);
-      //cardList = cardElement;
+      cardList = cardElement;
+
     }
   },
   ".elements"
   );
   initialCard.renderItems()
   //cardList = initialCard;
-  console.log(cardList)
+  //
 });
 }
 getCards();
 
 
+
+const disableEraser = Promise.all([getUserData,getCards])
 
 
 /*
@@ -176,9 +180,8 @@ export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard);
 export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile);
 
 export const avatarFormEdit = new PopupWithForm ("avatar", handleSubmitAvatar);
-//console.log(avatarFormEdit)
 
-export const userProfile = new UserInfo (person, desc);
+export const userProfile = new UserInfo (person.textContent, desc.textContent);
 
 (function documentEventListeners () {
   editButton.addEventListener("click", ()=>{

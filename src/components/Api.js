@@ -53,7 +53,7 @@ export default class Api {
     });
   }
 
-  postUserAvatar(link){
+  postUserAvatar({link}){
     console.log(link)
     fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
