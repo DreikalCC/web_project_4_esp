@@ -41,6 +41,7 @@
 @import url(../blocks/element/__liked/__liked.css);
 @import url(../blocks/element/__location/__location.css);
 @import url(../blocks/element/__erase/__erase.css);
+@import url(../blocks/element/__erase/__erase_disabled.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/__copyright.css);

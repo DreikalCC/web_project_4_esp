@@ -10,7 +10,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import {settings ,cardTemplate, editButton, addButton, avatarButton, newName, newDesc, person, desc, cardArea } from "../utils/constants.js"
+import {settings ,cardTemplate, editButton, addButton, avatarButton, newName, newDesc, person, desc, cardArea, initialCards } from "../utils/constants.js"
 
 
 
@@ -23,94 +23,28 @@ const api = new Api({
   }
 });
 
+let initialCard = {};
 
-/*const profileImage = document.querySelector(".profile__pic");
-profileImage.src = profileSrc;
-const aroundImage = document.querySelector(".header__logo");
-aroundImage.src = aroundSrc;
-const underlineImage = document.querySelector(".header__line");
-underlineImage.src = underlineSrc;*/
-
-
-/*
-function loadData(){
-};
-loadData();
-*/
-
-const getUserData = ()=> {
-  api.getUserInfo().then(({name,about,_id, avatar})=>{
-  userProfile.setUserInfo(name,about,_id,avatar)
+Promise.all([api.getUserInfo(),api.getInitialCards()])
+.then(([{name,about,_id,avatar},cards])=>{
+  userProfile.setAvatar(avatar)
+  userProfile.setUserInfo(name,about,_id)
   userProfile.getUserInfo();
-  console.log(userProfile)
-  //return user;
 
-});
-}
-
-//userProfile.setUserInfo(user)
-  //console.log()
-
-getUserData();
-
-//console.log(userProfile)
-let cardList = {};
-
-
-const getCards =  () => {
-api.getInitialCards()
-.then((res)=>{
-  console.log(res)
-  const initialCard = new Section ({
-    data: res,
+  initialCard = new Section ({
+    data: cards,
     renderer: (data) => {
+      data.user = userProfile._id;
       const cardElement = createCard(data);
       initialCard.setItem(cardElement);
-      cardList = cardElement;
-
     }
   },
   ".elements"
   );
   initialCard.renderItems()
-  //cardList = initialCard;
-  //
-});
-}
-getCards();
+})
 
 
-
-const disableEraser = Promise.all([getUserData,getCards])
-
-
-/*
-function disableEraser (){
-   getUserData()
-   .then(()=>{getCards()
-    const cardList = document.querySelectorAll(".element__image");
-    console.log(cardList)
-    cardList.forEach((card)=>{
-      console.log(card)
-      if(userProfile._id !== card._id)
-      document.querySelector(".element__erase").disable;
-  })
-   .then(()=>{
-    const cardList = document.querySelectorAll(".element")
-    console.log(cardList)
-    cardList.forEach((card)=>{
-      console.log(card)
-      if(userProfile._id !== card._id)
-      document.querySelector(".element__erase").disable;
-    })
-  })
-
-}
-disableEraser();
-
-
-
-*/
 
 
 
@@ -128,52 +62,82 @@ const enableValidation = (settings) => {
 
 enableValidation(settings);
 
-//console.log(formValidators)
-
 export const handleSubmitCard = (info)=>{
-  info.owner = userProfile;
+  addCardForm.loading('loading');
+  info.owner = userProfile.getUserInfo();
+  info.user = info.owner._id;
   info.likes = [];
-  console.log(getCards);
   const cardElement = createCard(info);
   initialCard.setItem(cardElement);
-
-console.log(info)
-  api.postCard(info)/*.then((data)=>{
-    const cardElement = createCard(data);
-    console.log(this)
-    cardArea.prepend(cardElement);
-  })
-
-  addCardForm.close();*/
+  api.postCard(info);
+  setTimeout((()=>{
+    addCardForm.close();
+    addCardForm.loading();
+  }),500);
 }
 
 export const handleSubmitProfile = ({name, desc}) =>{
-  api.postUserInfo(name, desc)
+  profileFormEdit.loading('loading');
+  api.postUserInfo(name, desc);
   userProfile.setUserInfo(name, desc);
-  profileFormEdit.close();
+  formValidators['edit'].resetValidation();
+  setTimeout((()=>{
+    profileFormEdit.close();
+    profileFormEdit.loading();
+  }),500);
 };
 
-export const handleSubmitAvatar = (url) =>{
-  console.log(url)
-  api.postUserAvatar(url);
-  userProfile.setAvatar(url);
-  avatarFormEdit.close();
+export const handleSubmitAvatar = ({link}) =>{
+
+  avatarFormEdit.loading('loading');
+  api.postUserAvatar(link);
+  userProfile.setAvatar(link);
+  setTimeout((()=>{
+    avatarFormEdit.close();
+    avatarFormEdit.loading();
+  }),500);
 };
 
-export const lightbox = new PopupWithImage ("popup");
+export const handleErase = ()=>{
+  confirmErase.loading('loading');
+  api.deleteCard(confirmErase.selected);
+  card._eraseTheCard(confirmErase.selected);
+  setTimeout((()=>{
+    confirmErase.close();
+    confirmErase.loading();
+  }),500);
+};
+
+export const handleLike =(cardId) => {
+  api.postLikes(cardId);
+};
+
+export const handleDislike =(cardId) => {
+  api.deleteLikes(cardId);
+};
+
+
+let card;
 
 export const createCard = (data) => {
-  const card = new Card ({name: data.name,
+   card = new Card ({
+    name: data.name,
     link:data.link,
     id:data._id,
     owner:data.owner,
     likes:data.likes,
     template:cardTemplate,
-    imageOpener:(evt)=>{lightbox.open(evt)}});
+    user:data.user,
+    imageOpener:(evt)=>{lightbox.open(evt)},
+    eraserOpener:(evt)=>{confirmErase.open(evt)},
+    handleLike:(evt)=>{handleLike(evt)},
+    handleDislike:(evt)=>{handleDislike(evt)}
+  })
   const cardElement = card.createCardElement();
   return cardElement;
 }
 
+export const lightbox = new PopupWithImage ("popup");
 
 export const addCardForm = new PopupWithForm ("gallery", handleSubmitCard);
 
@@ -181,32 +145,29 @@ export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile);
 
 export const avatarFormEdit = new PopupWithForm ("avatar", handleSubmitAvatar);
 
+export const confirmErase = new PopupWithForm ("eraser", handleErase);
+
 export const userProfile = new UserInfo (person.textContent, desc.textContent);
 
 (function documentEventListeners () {
-  editButton.addEventListener("click", ()=>{
+  editButton.addEventListener("click", (evt)=>{
     const userInfo = userProfile.getUserInfo();
-    console.log(userInfo)
+    //const button = evt.target.id;
     newName.value = userInfo.name;
     newDesc.value = userInfo.job;
-    formValidators['profile'].resetValidation();
-    profileFormEdit.open();
+    formValidators['edit'].resetValidation();
+    profileFormEdit.open(evt);
   });
 
-  avatarButton.addEventListener("click", ()=>{
+  avatarButton.addEventListener("click", (evt)=>{
+    //const button = evt.target.id;
     formValidators['avatar'].resetValidation();
-    avatarFormEdit.open();
+    avatarFormEdit.open(evt);
   })
 
-  addButton.addEventListener("click", ()=>{
+  addButton.addEventListener("click", (evt)=>{
+    //const button = evt.target.id;
     formValidators['gallery'].resetValidation();
-    addCardForm.open();
+    addCardForm.open(evt);
   });
 })();
-/*
-const profileImage = document.querySelector(".profile__pic");
-profileImage.src = profileSrc;
-const aroundImage = document.querySelector(".header__logo");
-aroundImage.src = aroundSrc;
-const underlineImage = document.querySelector(".header__line");
-underlineImage.src = underlineSrc;*/

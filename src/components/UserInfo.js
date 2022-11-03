@@ -1,11 +1,10 @@
 export default class UserInfo {
-  constructor(name, job,/* id, avatar*/){
+  constructor(name, job){
     this.name = name;
     this.job = job;
-    this._id = null;
-    this.avatar = null;
     this.avatarLocation = document.querySelector(".profile__pic");
-    //this.getUserInfo();
+    this.nameLocation = document.querySelector(".profile__name");
+    this.jobLocation = document.querySelector(".profile__description");
   }
 
   getUserInfo () {
@@ -18,19 +17,17 @@ export default class UserInfo {
     return userInfo
   }
 
-  setUserInfo (newUserName, newUserDesc, newUserId, newAvatar) {
-    this.name = newUserName;
-    this.job = newUserDesc;
-    this._id = newUserId;
-    this.avatar = newAvatar;
-    this.avatarLocation.src = this.avatar;
-    //this.getUserInfo();
+  setUserInfo (name,about,_id) {
+    this.name = name;
+    this.job = about;
+    this._id = _id;
+    this.nameLocation.textContent = this.name;
+    this.jobLocation.textContent = this.job;
   }
 
-  setAvatar ({link}){
-    console.log(this)
-    this.avatarLocation.src = link;
-    console.log(this)
+  setAvatar (avatar){
+    this.avatar = avatar;
+    this.avatarLocation.src = this.avatar;
   }
 
 }

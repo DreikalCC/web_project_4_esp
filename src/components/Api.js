@@ -38,7 +38,8 @@ export default class Api {
         authorization: this.auth
       }
     })
-    .then(res => res.json());
+    .then(res => res.json())
+    .catch((err)=>{console.log(err)})
   }
 
   postUserInfo(name, about){
@@ -50,10 +51,11 @@ export default class Api {
         name: name,
         about: about
       })
-    });
+    })
+    .catch((err)=>{console.log(err)})
   }
 
-  postUserAvatar({link}){
+  postUserAvatar(link){
     console.log(link)
     fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
@@ -61,10 +63,11 @@ export default class Api {
       body: JSON.stringify({
         avatar: link
       })
-    });
+    })
+    .catch((err)=>{console.log(err)})
   }
 
-  postCard(name,link){
+  postCard({name,link}){
     console.log(name, link)
     fetch(`${this.baseUrl}/cards`, {
       method: "POST",
@@ -73,7 +76,8 @@ export default class Api {
         name: name,
         link: link
       })
-    });
+    })
+    .catch((err)=>{console.log(err)})
   }
 
   postLikes(cardId){
@@ -81,7 +85,8 @@ export default class Api {
       method: "PUT",
       headers: this.headers,
       body: JSON.stringify({})
-    });
+    })
+    .catch((err)=>{console.log(err)})
   }
 
   deleteLikes(cardId){
@@ -89,14 +94,16 @@ export default class Api {
       method: "DELETE",
       headers: this.headers,
       body: JSON.stringify({})
-    });
+    })
+    .catch((err)=>{console.log(err)})
   }
 
-  deleteCard(cardId){
+  deleteCard({cardId}){
     fetch(`${this.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
       body: JSON.stringify({})
-    });
+    })
+    .catch((err)=>{console.log(err)})
   }
 }
