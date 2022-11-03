@@ -10,9 +10,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import {settings ,cardTemplate, editButton, addButton, avatarButton, newName, newDesc, person, desc, cardArea, initialCards } from "../utils/constants.js"
-
-
+import {settings ,cardTemplate, editButton, addButton, avatarButton, newName, newDesc, person, about, cardArea, initialCards } from "../utils/constants.js"
 
 
 const api = new Api({
@@ -26,10 +24,9 @@ const api = new Api({
 let initialCard = {};
 
 Promise.all([api.getUserInfo(),api.getInitialCards()])
-.then(([{name,about,_id,avatar},cards])=>{
+.then(([{name,about,_id,avatar},cards])=>{console.log()
   userProfile.setAvatar(avatar)
   userProfile.setUserInfo(name,about,_id)
-  userProfile.getUserInfo();
 
   initialCard = new Section ({
     data: cards,
@@ -43,6 +40,7 @@ Promise.all([api.getUserInfo(),api.getInitialCards()])
   );
   initialCard.renderItems()
 })
+.catch((err)=>{console.log(err)})
 
 
 
@@ -64,56 +62,72 @@ enableValidation(settings);
 
 export const handleSubmitCard = (info)=>{
   addCardForm.loading('loading');
-  info.owner = userProfile.getUserInfo();
-  info.user = info.owner._id;
-  info.likes = [];
-  const cardElement = createCard(info);
-  initialCard.setItem(cardElement);
-  api.postCard(info);
-  setTimeout((()=>{
+  api.postCard(info)
+  .then((res)=>{
+    res.owner = userProfile.getUserInfo();
+    res.user = res.owner._id;
+    res.likes = [];
+    const cardElement = createCard(res);
+  initialCard.setItem(cardElement);})
+  .catch((err)=>{console.log(err)})
+  .finally(()=>{
+    formValidators['gallery'].resetValidation();
     addCardForm.close();
-    addCardForm.loading();
-  }),500);
+    addCardForm.loading();}
+  )
 }
 
-export const handleSubmitProfile = ({name, desc}) =>{
+export const handleSubmitProfile = ({name,about}) =>{
+  console.log(name,about);
   profileFormEdit.loading('loading');
-  api.postUserInfo(name, desc);
-  userProfile.setUserInfo(name, desc);
-  formValidators['edit'].resetValidation();
-  setTimeout((()=>{
+  api.postUserInfo(name, about)
+  .then(({name,about,_id})=>{
+    userProfile.setUserInfo(name, about,_id)})
+  .catch((err)=>{console.log(err)})
+  .finally(()=>{
+    formValidators['edit'].resetValidation();
     profileFormEdit.close();
     profileFormEdit.loading();
-  }),500);
+  })
 };
 
 export const handleSubmitAvatar = ({link}) =>{
-
   avatarFormEdit.loading('loading');
-  api.postUserAvatar(link);
-  userProfile.setAvatar(link);
-  setTimeout((()=>{
+  api.postUserAvatar(link)
+  .then(()=>{userProfile.setAvatar({link})})
+  .catch((err)=>{console.log(err)})
+  .finally(()=>{
+    formValidators['avatar'].resetValidation();
     avatarFormEdit.close();
     avatarFormEdit.loading();
-  }),500);
+  })
 };
 
 export const handleErase = ()=>{
   confirmErase.loading('loading');
-  api.deleteCard(confirmErase.selected);
-  card._eraseTheCard(confirmErase.selected);
-  setTimeout((()=>{
+  api.deleteCard(confirmErase.selected)
+  .then(()=>{card._eraseTheCard(confirmErase.selected);})
+  .catch((err)=>{console.log(err)})
+  .finally(()=>{
+    formValidators['eraser']
     confirmErase.close();
     confirmErase.loading();
-  }),500);
+  })
+
+
+
+
 };
 
 export const handleLike =(cardId) => {
-  api.postLikes(cardId);
+  api.postLikes(cardId)
+  .catch((err)=>{console.log(err)})
+
 };
 
 export const handleDislike =(cardId) => {
-  api.deleteLikes(cardId);
+  api.deleteLikes(cardId)
+  .catch((err)=>{console.log(err)})
 };
 
 
@@ -147,7 +161,7 @@ export const avatarFormEdit = new PopupWithForm ("avatar", handleSubmitAvatar);
 
 export const confirmErase = new PopupWithForm ("eraser", handleErase);
 
-export const userProfile = new UserInfo (person.textContent, desc.textContent);
+export const userProfile = new UserInfo (person.textContent, about.textContent);
 
 (function documentEventListeners () {
   editButton.addEventListener("click", (evt)=>{

@@ -6,7 +6,7 @@ export const newName = document.querySelector(".input__name");
 export const newDesc = document.querySelector(".input__description");
 
 export const person = document.querySelector(".profile__name");
-export const desc = document.querySelector(".profile__description");
+export const about = document.querySelector(".profile__description");
 
 export const cardTemplate = document.querySelector("#card").content;
 export const cardArea = document.querySelector(".elements");

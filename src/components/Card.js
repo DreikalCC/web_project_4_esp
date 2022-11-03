@@ -28,7 +28,7 @@ export default class Card {
     this.likeCounter.textContent = this.likesAmount;
     this.newLikesAmount = "";
     this._setEventListeners();
-    this._hasLiked();
+    this.liked = this._hasLiked();
     this._toggleButtonState();
     return this._cardElement;
   }
@@ -55,16 +55,22 @@ export default class Card {
   _likeTheCard = (evt) => {
     const _likeButton = evt.target;
     if(_likeButton.classList.contains("element__liked")){
-      _likeButton.nextElementSibling.textContent = this.likesAmount-1;
+        _likeButton.nextElementSibling.textContent = this.likesAmount-1;
+        this.newLikesAmount = this.likesAmount-1;
+        this.newLikeNumber();
       _likeButton.classList.remove("element__liked");
       this.handleDislike(this.id);
-    }
-    else{
+    }else{
       _likeButton.classList.add("element__liked");
       _likeButton.nextElementSibling.textContent = this.likesAmount+1;
       this.newLikesAmount = this.likesAmount+1;
+      this.newLikeNumber();
       this.handleLike(this.id);
     }
+  }
+
+  newLikeNumber(){
+    this.likesAmount = this.newLikesAmount;
   }
 
   _eraseTheCard  ({selectedCard})  {

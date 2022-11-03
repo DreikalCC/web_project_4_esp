@@ -5,20 +5,21 @@ export default class Api {
     this.auth = this.headers.authorization;
   }
 
+  _checkResponse (res) {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error getting user data: ${res.status},
+      ${res.statusText}`);
+  }
+
   getInitialCards () {
     return fetch(`${this.baseUrl}/cards`, {
       headers: {
         authorization: this.auth
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error getting user data: ${res.status},
-        ${res.statusText}`);
-      })
-      .catch((err)=>{console.log(err)})
+    .then(this._checkResponse)
   }
 
   getUserInfo (){
@@ -27,19 +28,12 @@ export default class Api {
         authorization: this.auth
       }
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error getting user data: ${res.status},
-      ${res.statusText}`);
-    })
-    .catch((err)=>{console.log(err)})
+    .then(this._checkResponse)
   }
 
   postUserInfo(name, about){
     console.log(name, about)
-    fetch(`${this.baseUrl}/users/me`, {
+    return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
@@ -47,58 +41,58 @@ export default class Api {
         about: about
       })
     })
-    .catch((err)=>{console.log(err)})
+    .then(this._checkResponse)
   }
 
   postUserAvatar(link){
     console.log(link)
-    fetch(`${this.baseUrl}/users/me/avatar`, {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
         avatar: link
       })
     })
-    .catch((err)=>{console.log(err)})
+    .then(this._checkResponse)
   }
 
   postCard({name,link}){
     console.log(name, link)
-    fetch(`${this.baseUrl}/cards`, {
+    return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify({
-        name: name,
-        link: link
+        name,
+        link
       })
     })
-    .catch((err)=>{console.log(err)})
+    .then(this._checkResponse)
   }
 
   postLikes(cardId){
-    fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this.headers,
       body: JSON.stringify({})
     })
-    .catch((err)=>{console.log(err)})
+    .then(this._checkResponse)
   }
 
   deleteLikes(cardId){
-    fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
       body: JSON.stringify({})
     })
-    .catch((err)=>{console.log(err)})
+    .then(this._checkResponse)
   }
 
   deleteCard({cardId}){
-    fetch(`${this.baseUrl}/cards/${cardId}`, {
+    return fetch(`${this.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
       body: JSON.stringify({})
     })
-    .catch((err)=>{console.log(err)})
+    .then(this._checkResponse)
   }
 }
