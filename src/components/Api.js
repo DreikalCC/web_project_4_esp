@@ -3,19 +3,8 @@ export default class Api {
     this.baseUrl = baseUrl;
     this.headers = headers;
     this.auth = this.headers.authorization;
-    //this.cards = this.getInitialCards();
   }
 
-  /*async getInitialCards () {
-    try{
-      const res = await fetch(`${this.baseUrl}/users/me`);
-      const data = await res.json();
-      return data;
-    }catch(err){
-      console.log(`Error getting user data: ${res.status},
-      ${res.statusText}`);
-    }
-  }*/
   getInitialCards () {
     return fetch(`${this.baseUrl}/cards`, {
       headers: {
@@ -38,7 +27,13 @@ export default class Api {
         authorization: this.auth
       }
     })
-    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error getting user data: ${res.status},
+      ${res.statusText}`);
+    })
     .catch((err)=>{console.log(err)})
   }
 

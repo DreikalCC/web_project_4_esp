@@ -9,7 +9,6 @@ export class Popup {
 
   open  ()  {
     this._container.classList.add("popup_active");
-    //console.log(this)
     this._handleEscClose();
   }
 
