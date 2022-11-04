@@ -7,6 +7,7 @@ import Api from "../components/Api.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
@@ -163,7 +164,7 @@ export const profileFormEdit = new PopupWithForm ("edit", handleSubmitProfile);
 
 export const avatarFormEdit = new PopupWithForm ("avatar", handleSubmitAvatar);
 
-export const confirmErase = new PopupWithForm ("eraser", handleErase);
+export const confirmErase = new PopupWithConfirmation ("eraser", handleErase);
 
 export const userProfile = new UserInfo (person.textContent, about.textContent);
 

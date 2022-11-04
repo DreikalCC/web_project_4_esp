@@ -1,6 +1,6 @@
 import {Popup} from "./Popup.js"
 
-export default class PopupWithForm extends Popup {
+export default class PopupWithConfirmation extends Popup {
   constructor(popupSelector, callback) {
     super(popupSelector);
     this.callback = callback;
@@ -11,9 +11,22 @@ export default class PopupWithForm extends Popup {
     this.selected = {};
   }
 
-  close () {
-    this._container.querySelector(".edit__form").reset();
-    super.close();
+  open (evt) {
+    const button = evt.target;
+    super.open();
+    if(button.id === "erase-btn"){
+      const selectedCard = button.closest(".element");
+      const cardId = button.cardId
+      this.selected = {selectedCard, cardId};
+    }
+  }
+
+  setEventListeners  ()  {
+    super.setEventListeners();
+    this._container.querySelector(".edit__form").addEventListener("submit",(evt) => {
+      evt.preventDefault();
+      this.callback();
+    });
   }
 
   loading(loading){
@@ -22,19 +35,5 @@ export default class PopupWithForm extends Popup {
     }else{
       this.submitButton.textContent = this.submitButtonText;
     }
-  }
-
-  setEventListeners  ()  {
-    super.setEventListeners();
-    this._container.querySelector(".edit__form").addEventListener("submit",(evt) => {
-      evt.preventDefault();
-      this.callback(this._getInputValues());
-    });
-  }
-
-    _getInputValues () {
-    const inputValues = {};
-    this._inputFields.forEach(field => {inputValues[field.name] = field.value;} );
-    return inputValues;
   }
 }
