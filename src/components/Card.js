@@ -59,7 +59,6 @@ export default class Card {
 
       this.handleDislike(card);
     }else{
-      console.log()
       this.handleLike(card);
     }
   }

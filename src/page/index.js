@@ -24,7 +24,7 @@ const api = new Api({
 let initialCard = {};
 
 Promise.all([api.getUserInfo(),api.getInitialCards()])
-.then(([{name,about,_id,avatar},cards])=>{console.log()
+.then(([{name,about,_id,avatar},cards])=>{
   userProfile.setAvatar(avatar)
   userProfile.setUserInfo(name,about,_id)
 
@@ -116,13 +116,10 @@ export const handleErase = ()=>{
 };
 
 export const handleLike =({cardId,button}) => {
-  console.log(cardId)
-  console.log(button)
   api.postLikes(cardId)
-  .then((res)=>{console.log(res.likes.length)
+  .then((res)=>{
     card.likeTheCard(button)
     const newLikes = res.likes.length;
-    console.log(newLikes);
     card.newLikeNumber(button, newLikes);
   })
   .catch((err)=>{console.log(err)})

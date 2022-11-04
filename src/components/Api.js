@@ -32,7 +32,6 @@ export default class Api {
   }
 
   postUserInfo(name, about){
-    console.log(name, about)
     return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",
       headers: this.headers,
@@ -45,7 +44,6 @@ export default class Api {
   }
 
   postUserAvatar(link){
-    console.log(link)
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this.headers,
@@ -57,7 +55,6 @@ export default class Api {
   }
 
   postCard({name,link}){
-    console.log(name, link)
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
       headers: this.headers,
