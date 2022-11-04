@@ -68,25 +68,25 @@ export const handleSubmitCard = (info)=>{
     res.user = res.owner._id;
     res.likes = [];
     const cardElement = createCard(res);
-  initialCard.setItem(cardElement);})
+    initialCard.setItem(cardElement);
+    addCardForm.close();
+  })
   .catch((err)=>{console.log(err)})
   .finally(()=>{
     formValidators['gallery'].resetValidation();
-    addCardForm.close();
     addCardForm.loading();}
   )
 }
 
 export const handleSubmitProfile = ({name,about}) =>{
-  console.log(name,about);
   profileFormEdit.loading('loading');
   api.postUserInfo(name, about)
   .then(({name,about,_id})=>{
-    userProfile.setUserInfo(name, about,_id)})
+    userProfile.setUserInfo(name, about,_id);
+    profileFormEdit.close();})
   .catch((err)=>{console.log(err)})
   .finally(()=>{
     formValidators['edit'].resetValidation();
-    profileFormEdit.close();
     profileFormEdit.loading();
   })
 };
@@ -94,11 +94,11 @@ export const handleSubmitProfile = ({name,about}) =>{
 export const handleSubmitAvatar = ({link}) =>{
   avatarFormEdit.loading('loading');
   api.postUserAvatar(link)
-  .then(()=>{userProfile.setAvatar({link})})
+  .then((res)=>{userProfile.setAvatar(res.avatar)
+  avatarFormEdit.close();})
   .catch((err)=>{console.log(err)})
   .finally(()=>{
     formValidators['avatar'].resetValidation();
-    avatarFormEdit.close();
     avatarFormEdit.loading();
   })
 };
@@ -106,30 +106,37 @@ export const handleSubmitAvatar = ({link}) =>{
 export const handleErase = ()=>{
   confirmErase.loading('loading');
   api.deleteCard(confirmErase.selected)
-  .then(()=>{card._eraseTheCard(confirmErase.selected);})
+  .then(()=>{card.eraseTheCard(confirmErase.selected);
+    confirmErase.close();})
   .catch((err)=>{console.log(err)})
   .finally(()=>{
     formValidators['eraser']
-    confirmErase.close();
     confirmErase.loading();
   })
-
-
-
-
 };
 
-export const handleLike =(cardId) => {
+export const handleLike =({cardId,button}) => {
+  console.log(cardId)
+  console.log(button)
   api.postLikes(cardId)
+  .then((res)=>{console.log(res.likes.length)
+    card.likeTheCard(button)
+    const newLikes = res.likes.length;
+    console.log(newLikes);
+    card.newLikeNumber(button, newLikes);
+  })
   .catch((err)=>{console.log(err)})
-
 };
 
-export const handleDislike =(cardId) => {
+export const handleDislike =({cardId,button}) => {
   api.deleteLikes(cardId)
+  .then((res)=>{
+    card.dislikeTheCard(button)
+    const newLikes = res.likes.length;
+    card.newLikeNumber(button, newLikes);
+  })
   .catch((err)=>{console.log(err)})
 };
-
 
 let card;
 
@@ -166,7 +173,6 @@ export const userProfile = new UserInfo (person.textContent, about.textContent);
 (function documentEventListeners () {
   editButton.addEventListener("click", (evt)=>{
     const userInfo = userProfile.getUserInfo();
-    //const button = evt.target.id;
     newName.value = userInfo.name;
     newDesc.value = userInfo.job;
     formValidators['edit'].resetValidation();
@@ -174,13 +180,11 @@ export const userProfile = new UserInfo (person.textContent, about.textContent);
   });
 
   avatarButton.addEventListener("click", (evt)=>{
-    //const button = evt.target.id;
     formValidators['avatar'].resetValidation();
     avatarFormEdit.open(evt);
   })
 
   addButton.addEventListener("click", (evt)=>{
-    //const button = evt.target.id;
     formValidators['gallery'].resetValidation();
     addCardForm.open(evt);
   });
