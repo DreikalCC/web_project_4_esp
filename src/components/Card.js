@@ -64,42 +64,19 @@ export default class Card {
     }
   }
 
-/*
-  _likeTheCard = (evt) => {
-    const _likeButton = evt.target;
-    if(_likeButton.classList.contains("element__liked")){
-        _likeButton.nextElementSibling.textContent = this.likesAmount-1;
-        this.newLikesAmount = this.likesAmount-1;
-        this._newLikeNumber();
-      _likeButton.classList.remove("element__liked");
-      this.handleDislike(this.id);
-    }else{
-      _likeButton.classList.add("element__liked");
-      _likeButton.nextElementSibling.textContent = this.likesAmount+1;
-      this.newLikesAmount = this.likesAmount+1;
-      this._newLikeNumber();
-      this.handleLike(this.id);
-    }
-  }*/
-
   likeTheCard (button) {
-    //console.log(this)
     button.classList.add("element__liked");
-    //button.nextElementSibling.textContent = this.likesAmount+1;
     this.newLikesAmount = this.likesAmount+1;
 
   }
 
   dislikeTheCard (button) {
-    //console.log(this)
-    //button.nextElementSibling.textContent = this.likesAmount-1;
     this.newLikesAmount = this.likesAmount-1;
     button.classList.remove("element__liked");
 
   }
 
   newLikeNumber(button, likes){
-    //this.likesAmount = this.newLikesAmount;
     button.nextElementSibling.textContent = likes;
   }
 
