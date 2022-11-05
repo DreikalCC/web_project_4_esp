@@ -165,7 +165,7 @@ export const avatarFormEdit = new PopupWithForm ("avatar", handleSubmitAvatar);
 
 export const confirmErase = new PopupWithConfirmation ("eraser", handleErase);
 
-export const userProfile = new UserInfo (person.textContent, about.textContent, profileAvatar);
+export const userProfile = new UserInfo (person.textContent, about.textContent, profileAvatar, person, about);
 
 (function documentEventListeners () {
   editButton.addEventListener("click", (evt)=>{
