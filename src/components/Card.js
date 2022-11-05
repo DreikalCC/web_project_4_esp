@@ -65,14 +65,10 @@ export default class Card {
 
   likeTheCard (button) {
     button.classList.add("element__liked");
-    this.newLikesAmount = this.likesAmount+1;
-
   }
 
   dislikeTheCard (button) {
-    this.newLikesAmount = this.likesAmount-1;
     button.classList.remove("element__liked");
-
   }
 
   newLikeNumber(button, likes){
