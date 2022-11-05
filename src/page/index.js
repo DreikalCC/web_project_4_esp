@@ -11,7 +11,7 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import {settings ,cardTemplate, editButton, addButton, avatarButton, newName, newDesc, person, about, cardArea, initialCards } from "../utils/constants.js"
+import {settings ,cardTemplate, editButton, addButton, avatarButton, newName, newDesc, person, about, profileAvatar } from "../utils/constants.js"
 
 
 const api = new Api({
@@ -22,24 +22,24 @@ const api = new Api({
   }
 });
 
-let initialCard = {};
+let cardSection = {};
 
 Promise.all([api.getUserInfo(),api.getInitialCards()])
 .then(([{name,about,_id,avatar},cards])=>{
   userProfile.setAvatar(avatar)
   userProfile.setUserInfo(name,about,_id)
 
-  initialCard = new Section ({
+  cardSection = new Section ({
     data: cards,
     renderer: (data) => {
       data.user = userProfile._id;
       const cardElement = createCard(data);
-      initialCard.setItem(cardElement);
+      cardSection.setItem(cardElement);
     }
   },
   ".elements"
   );
-  initialCard.renderItems()
+  cardSection.renderItems()
 })
 .catch((err)=>{console.log(err)})
 
@@ -69,7 +69,7 @@ export const handleSubmitCard = (info)=>{
     res.user = res.owner._id;
     res.likes = [];
     const cardElement = createCard(res);
-    initialCard.setItem(cardElement);
+    cardSection.setItem(cardElement);
     addCardForm.close();
   })
   .catch((err)=>{console.log(err)})
@@ -111,7 +111,6 @@ export const handleErase = ()=>{
     confirmErase.close();})
   .catch((err)=>{console.log(err)})
   .finally(()=>{
-    formValidators['eraser']
     confirmErase.loading();
   })
 };
@@ -166,7 +165,7 @@ export const avatarFormEdit = new PopupWithForm ("avatar", handleSubmitAvatar);
 
 export const confirmErase = new PopupWithConfirmation ("eraser", handleErase);
 
-export const userProfile = new UserInfo (person.textContent, about.textContent);
+export const userProfile = new UserInfo (person.textContent, about.textContent, profileAvatar);
 
 (function documentEventListeners () {
   editButton.addEventListener("click", (evt)=>{
